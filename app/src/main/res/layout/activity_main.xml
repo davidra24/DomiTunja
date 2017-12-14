@@ -7,4 +7,13 @@
     android:layout_height="match_parent"
     tools:context="domitunja.appsolution.co.domitunja.MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="376dp"
+        android:layout_height="572dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/img_splashscreen"
+        app:srcCompat="@drawable/splash"
+        tools:layout_editor_absoluteX="-7dp"
+        tools:layout_editor_absoluteY="-5dp" />
 </android.support.constraint.ConstraintLayout>
