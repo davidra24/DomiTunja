@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DomiTunja.iml" filepath="$PROJECT_DIR$/DomiTunja.iml" />
-      <module fileurl="file://C:\Users\Martin\Downloads\Appsolution\DomiTunja\DomiTunja.iml" filepath="C:\Users\Martin\Downloads\Appsolution\DomiTunja\DomiTunja.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Martin\Downloads\Appsolution\DomiTunja\app\app.iml" filepath="C:\Users\Martin\Downloads\Appsolution\DomiTunja\app\app.iml" />
     </modules>
   </component>
 </project>
