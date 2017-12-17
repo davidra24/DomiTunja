@@ -1,7 +1,7 @@
 package domitunja.appsolution.co.domitunja
 
 import android.widget.TabHost
-import android.view.GestureDetector
+//import android.view.GestureDetector
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.Animation
@@ -9,27 +9,18 @@ import android.view.animation.TranslateAnimation
 
 
 
-
+class AnimatedTabHostListener
 /**
- * Created by Martin on 17/12/2017.
- */
-class AnimatedTabHostListener: TabHost.OnTabChangeListener {
-    private val ANIMATION_TIME = 240
-    private var tabHost: TabHost? = null
+ * Constructor that takes the TabHost as a parameter and sets previousView to the currentView at instantiation
+ *
+ * @param tabHost
+ */(tabHost: TabHost) : TabHost.OnTabChangeListener {
+    private val animationTime = 240
+    private var tabHost: TabHost? = tabHost
     private var previousView: View? = null
     private var currentView: View? = null
-    private var gestureDetector: GestureDetector? = null
+    //private var gestureDetector: GestureDetector? = null
     private var currentTab: Int = 0
-
-    /**
-     * Constructor that takes the TabHost as a parameter and sets previousView to the currentView at instantiation
-     *
-     * @param tabHost
-     */
-    fun AnimatedTabHostListener(tabHost: TabHost) {
-        this.tabHost = tabHost
-        this.previousView = tabHost.currentView
-    }
 
     /**
      * When tabs change we fetch the current view that we are animating to and animate it and the previous view in the
@@ -100,8 +91,12 @@ class AnimatedTabHostListener: TabHost.OnTabChangeListener {
      * @return the animation with common properties
      */
     private fun setProperties(animation: Animation): Animation {
-        animation.duration = ANIMATION_TIME.toLong()
+        animation.duration = animationTime.toLong()
         animation.interpolator = AccelerateInterpolator()
         return animation
+    }
+
+    init {
+        this.previousView = tabHost.currentView
     }
 }

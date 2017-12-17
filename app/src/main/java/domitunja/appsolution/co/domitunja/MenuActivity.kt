@@ -10,9 +10,10 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         tabHost.setup()
+        tabHost.setOnTabChangedListener(AnimatedTabHostListener(tabHost))
         init()
     }
-    fun init(){
+    private fun init(){
         var spec = tabHost.newTabSpec( "Domicilios")
         spec.setContent(R.id.tab_domicilios)
         spec.setIndicator("Domicilios")
