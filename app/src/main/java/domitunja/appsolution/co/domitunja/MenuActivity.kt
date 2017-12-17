@@ -10,7 +10,6 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         tabHost.setup()
-        tabHost.setOnTabChangedListener(AnimatedTabHostListener(tabHost))
         init()
     }
     private fun init(){
