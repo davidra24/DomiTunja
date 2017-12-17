@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">DomiTunja</string>
     <string name="img_splashscreen">img splashscreen</string>
+    <string name="domicile">Domicilios</string>
+    <string name="recomended">Recomendados</string>
+    <string name="favorites">Favoritos</string>
+    <string name="more">Más</string>
 </resources>
