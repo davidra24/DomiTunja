@@ -5,4 +5,6 @@
     <string name="recomended">Recomendados</string>
     <string name="favorites">Favoritos</string>
     <string name="more">Más</string>
+    <string name="bar_menu_desc">Barra del Menu</string>
+    <string name="image_bar_desc">image_bar</string>
 </resources>
