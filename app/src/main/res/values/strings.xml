@@ -7,4 +7,7 @@
     <string name="more">Más</string>
     <string name="bar_menu_desc">Barra del Menu</string>
     <string name="image_bar_desc">image_bar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

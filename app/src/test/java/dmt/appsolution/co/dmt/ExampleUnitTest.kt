@@ -1,4 +1,4 @@
-package domitunja.appsolution.co.domitunja
+package dmt.appsolution.co.dmt
 
 import org.junit.Test
 

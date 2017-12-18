@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="domitunja.appsolution.co.domitunja.MenuActivity">
+    tools:context="dmt.appsolution.co.dmt.activities.MenuActivity">
 
     <ImageView
         android:id="@+id/imageViewBarDMT"
@@ -31,7 +31,7 @@
 
     <TabHost
         android:id="@+id/tabHost"
-        android:layout_width="0dp"
+        android:layout_width="384dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,13 +45,14 @@
             android:orientation="vertical">
 
             <HorizontalScrollView
-                android:layout_width="wrap_content"
+                android:id="@+id/horizontalScrollViewMenu"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TabWidget
                     android:id="@android:id/tabs"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@color/colorPrimaryDark">
 
                 </TabWidget>
@@ -59,44 +60,16 @@
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
-                android:layout_width="382dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:id="@+id/tab_domicilios"
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPagerMenu"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
-                    <com.google.android.gms.maps.MapView
-                        android:id="@+id/mapView"
-                        android:layout_width="match_parent"
-                        android:layout_height="231dp" />
-                </LinearLayout>
+                </android.support.v4.view.ViewPager>
 
-                <LinearLayout
-                    android:id="@+id/tab_recomendados"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab_favoritos"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab_mas"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
             </FrameLayout>
 
         </LinearLayout>
