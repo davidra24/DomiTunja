@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="action_button_min_width">56dp</dimen>
-    <dimen name="indeterminate_progress_size">32dp</dimen>
+    <dimen name="icon_splash_height">448dp</dimen>
+    <dimen name="map_height">265dp</dimen>
+    <dimen name="recycler_view_height">286dp</dimen>
 </resources>

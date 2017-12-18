@@ -10,7 +10,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.splash_screen)
+        setContentView(R.layout.activity_splash_screen)
         Handler().postDelayed({
                 startActivity(Intent(this, MenuActivity::class.java))
                 finish()
