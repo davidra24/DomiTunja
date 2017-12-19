@@ -1,21 +1,17 @@
-package dmt.appsolution.co.dmt.ItemList;
-
-/**
- * Created by davic on 16/11/2017.
- */
+package dmt.appsolution.co.dmt.itemList;
 
 public class ItemDomicile {
     private int imagen;
     private String titulo;
     private String descripcion;
-    private int[] stars;
+    private int rating;
     private int masInfo;
 
-    public ItemDomicile(int imagen, String titulo, String descripcion, int[] stars, int masInfo){
+    public ItemDomicile(int imagen, String titulo, String descripcion, int rating, int masInfo){
         this.imagen = imagen;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.stars = stars;
+        this.rating = rating;
         this.masInfo = masInfo;
     }
     public int getImagen(){
@@ -27,7 +23,7 @@ public class ItemDomicile {
     public String getDescripcion(){
         return this.descripcion;
     }
-    public int[] getStars(){return this.stars;}
+    public int getRating(){return this.rating;}
     public int getMasInfo(){
         return this.masInfo;
     }

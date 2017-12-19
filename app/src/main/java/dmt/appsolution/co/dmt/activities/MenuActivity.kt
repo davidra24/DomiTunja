@@ -20,7 +20,7 @@ class MenuActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, TabHos
         setContentView(R.layout.activity_menu)
         tabHost.setup()
         initVIewPager()
-            initTabHost()
+        initTabHost()
     }
 
     private fun initVIewPager(){

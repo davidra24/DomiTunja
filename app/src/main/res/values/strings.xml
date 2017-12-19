@@ -7,7 +7,11 @@
     <string name="more">Más</string>
     <string name="bar_menu_desc">Barra del Menu</string>
     <string name="image_bar_desc">image_bar</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="domicile_bar_desc">Barra de domicilio</string>
+    <string name="icon_bar_desc">Icono de Barra Domicilio</string>
+    <string name="img_item_desc">Imagen Restaurante Item</string>
+    <string name="name_rest_item">Nombre restaurante item</string>
+    <string name="button_view_item">Boton vista item</string>
+    <string name="desc_rest_item">Descripcion restaurante item</string>
+    <string name="type_food">Tipo de Comida</string>
 </resources>
