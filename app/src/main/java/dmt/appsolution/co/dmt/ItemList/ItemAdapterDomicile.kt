@@ -25,19 +25,23 @@ class ItemAdapterDomicile(var context:Context, var items:List<ItemDomicile>) : B
             val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             rowView = layoutInflater.inflate(R.layout.activity_item_paraderos, parent, false)
         }
-        val imagenResultado = rowView.findViewById(R.id.imagenResultado) as ImageView
-        val tituloResultado = rowView.findViewById(R.id.tituloResultado) as TextView
-        val descripcionResultado = rowView.findViewById(R.id.descripcionResultado) as TextView
-        val imageStar = rowView.findViewById(R.id.estrellasResultado) as ImageView
-        val precioRestultado = rowView.findViewById(R.id.preciotext) as EditText
-        val infobtn = rowView.findViewById(R.id.masinfobtn) as Button
+        val imageDomicile = rowView.findViewById(R.id.imageDomicile) as ImageView
+        val tituloDomicile = rowView.findViewById(R.id.txtTitleDomicile) as TextView
+        val descripcionDomicile = rowView.findViewById(R.id.txtDescripDomicile) as TextView
+        val imageStar = arrayListOf(rowView.findViewById(R.id.imgStarDomicile1) as ImageView,
+                                    rowView.findViewById(R.id.imgStarDomicile2) as ImageView,
+                                    rowView.findViewById(R.id.imgStarDomicile3) as ImageView,
+                                    rowView.findViewById(R.id.imgStarDomicile4) as ImageView,
+                                    rowView.findViewById(R.id.imgStarDomicile5) as ImageView)
+        val btnViewDomicile = rowView.findViewById(R.id.btnViewDomicile) as ImageButton
         val item = this.items[position]
-        imagenResultado.setImageResource(item.imagen)
-        tituloResultado.text = item.titulo
-        descripcionResultado.text = item.descripcion
-        imageStar.setImageResource(item.stars)
-        precioRestultado.setText(item.precio)
-        infobtn.text = item.info
+        imageDomicile.setImageResource(item.imagen)
+        tituloDomicile.text = item.titulo
+        descripcionDomicile.text = item.descripcion
+        for (i in imageStar.indices){
+            imageStar[i].setImageResource(item.stars[i])
+        }
+        btnViewDomicile.setImageResource(item.masInfo)
         return rowView
     }
 
