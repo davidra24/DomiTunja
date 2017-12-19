@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
                                             permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
             REQUEST_CODE_ASK_PERMISSIONS -> {
-                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Handler().postDelayed({
                         startActivity(Intent(this, MenuActivity::class.java))
                         finish()
