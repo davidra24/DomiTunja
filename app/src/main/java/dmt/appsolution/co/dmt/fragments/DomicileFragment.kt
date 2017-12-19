@@ -11,12 +11,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import dmt.appsolution.co.dmt.adapters.ItemAdapterDomicile
 import dmt.appsolution.co.dmt.itemList.ItemDomicile
 import dmt.appsolution.co.dmt.R
-import kotlinx.android.synthetic.main.fragment_domicile.*
+import kotlinx.android.synthetic.main.activity_domicile_item.*
 
 class DomicileFragment : Fragment(), OnMapReadyCallback {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_domicile, container, false)
+        return inflater!!.inflate(R.layout.activity_domicile_item, container, false)
 
     }
     @SuppressLint("MissingPermission")
