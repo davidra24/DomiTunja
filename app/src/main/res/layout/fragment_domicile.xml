@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="dmt.appsolution.co.dmt.fragments.FavoriteFragment">
+    android:background="@drawable/background_splash"
+    tools:context="dmt.appsolution.co.dmt.fragments.DomicileFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <com.google.android.gms.maps.MapView
-        android:id="@+id/mapViewFavorite"
+        android:id="@+id/mapViewDomicile"
         android:layout_width="0dp"
         android:layout_height="@dimen/map_height"
         android:layout_marginBottom="4dp"
@@ -20,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/listViewFavorite"
+        android:id="@+id/listViewDomicile"
         android:layout_width="0dp"
         android:layout_height="@dimen/list_view_height_domicile"
         android:layout_marginBottom="32dp"
