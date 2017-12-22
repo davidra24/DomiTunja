@@ -8,16 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import dmt.appsolution.co.dmt.adapters.ItemAdapterDomicile
-import dmt.appsolution.co.dmt.itemList.ItemDomicile
+import dmt.appsolution.co.dmt.adapters.ItemAdapter
+import dmt.appsolution.co.dmt.itemList.ItemRestaurant
 import dmt.appsolution.co.dmt.R
-import kotlinx.android.synthetic.main.activity_domicile_item.*
 import kotlinx.android.synthetic.main.fragment_domicile.*
 
 class DomicileFragment : Fragment(), OnMapReadyCallback {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.activity_domicile_item, container, false)
+        return inflater!!.inflate(R.layout.fragment_domicile, container, false)
 
     }
     @SuppressLint("MissingPermission")
@@ -29,14 +28,14 @@ class DomicileFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun fillListDomicile(){
-        val items: MutableList<ItemDomicile> = mutableListOf()
-        items.add(ItemDomicile(R.drawable.photo_apartament, "Restaurante",
+        val items: MutableList<ItemRestaurant> = mutableListOf()
+        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante",
                 "Cra 12 #34-55", 5, R.drawable.item_arrow))
-        items.add(ItemDomicile(R.drawable.photo_apartament, "Restaurante",
+        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante",
                 "Cra 12 #34-55", 3, R.drawable.item_arrow))
-        items.add(ItemDomicile(R.drawable.photo_apartament, "Restaurante",
+        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante",
                 "Cra 12 #34-55", 4, R.drawable.item_arrow))
-        listViewDomicile.adapter = ItemAdapterDomicile(this.context, items)
+        listViewDomicile.adapter = ItemAdapter(this.activity, items)
     }
 
     @SuppressLint("MissingPermission")

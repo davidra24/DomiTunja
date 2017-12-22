@@ -5,4 +5,7 @@
     <dimen name="list_view_height_domicile">291dp</dimen>
     <dimen name="list_view_height_favorite">316dp</dimen>
     <dimen name="divider_list_height">3dp</dimen>
+    <dimen name="more_img_height">387dp</dimen>
+    <dimen name="more_icon_height">385dp</dimen>
+    <dimen name="linear_more_height">160dp</dimen>
 </resources>

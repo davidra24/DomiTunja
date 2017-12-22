@@ -1,13 +1,13 @@
 package dmt.appsolution.co.dmt.itemList;
 
-public class ItemDomicile {
+public class ItemRestaurant {
     private int imagen;
     private String titulo;
     private String descripcion;
     private int rating;
     private int masInfo;
 
-    public ItemDomicile(int imagen, String titulo, String descripcion, int rating, int masInfo){
+    public ItemRestaurant(int imagen, String titulo, String descripcion, int rating, int masInfo){
         this.imagen = imagen;
         this.titulo = titulo;
         this.descripcion = descripcion;

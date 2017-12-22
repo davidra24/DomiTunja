@@ -21,7 +21,11 @@ class SplashActivity : AppCompatActivity() {
         if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf("android.permission.ACCESS_FINE_LOCATION"),
                     REQUEST_CODE_ASK_PERMISSIONS)
-        }
+        }else
+            Handler().postDelayed({
+                startActivity(Intent(this, MenuActivity::class.java))
+                finish()
+            }, 1500)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int,

@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import dmt.appsolution.co.dmt.R
-import dmt.appsolution.co.dmt.itemList.ItemMore
+import dmt.appsolution.co.dmt.itemList.ItemRecommended
 
-class MoreAdapter(imageList: ArrayList<ItemMore>) : RecyclerView.Adapter<MoreAdapter.ViewHolderMore>() {
-    var imageList = ArrayList<ItemMore>()
+class RecomendedAdapter(imageList: ArrayList<ItemRecommended>) : RecyclerView.Adapter<RecomendedAdapter.ViewHolderMore>() {
+    var imageList = ArrayList<ItemRecommended>()
 
     init {
         this.imageList = imageList
@@ -17,7 +17,7 @@ class MoreAdapter(imageList: ArrayList<ItemMore>) : RecyclerView.Adapter<MoreAda
 
     override fun onBindViewHolder(holder: ViewHolderMore?, position: Int) {
 
-        holder?.ima?.setImageResource(imageList.get(position).imeg)
+        holder?.ima?.setImageResource(imageList[position].imeg)
     }
 
     override fun getItemCount(): Int {

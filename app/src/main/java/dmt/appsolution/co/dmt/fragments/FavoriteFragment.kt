@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import dmt.appsolution.co.dmt.R
-import dmt.appsolution.co.dmt.adapters.ItemAdapterDomicile
-import dmt.appsolution.co.dmt.itemList.ItemDomicile
+import dmt.appsolution.co.dmt.adapters.ItemAdapter
+import dmt.appsolution.co.dmt.itemList.ItemRestaurant
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 /**
@@ -34,14 +34,14 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun fillListFavorite(){
-        val items: MutableList<ItemDomicile> = mutableListOf()
-        items.add(ItemDomicile(R.drawable.photo_apartament, "Restaurante",
+        val items: MutableList<ItemRestaurant> = mutableListOf()
+        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante",
                 "Cra 12 #34-55", 5, R.drawable.item_arrow))
-        items.add(ItemDomicile(R.drawable.photo_apartament, "Restaurante",
+        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante",
                 "Cra 12 #34-55", 3, R.drawable.item_arrow))
-        items.add(ItemDomicile(R.drawable.photo_apartament, "Restaurante",
+        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante",
                 "Cra 12 #34-55", 4, R.drawable.item_arrow))
-        listViewFavorite.adapter = ItemAdapterDomicile(this.context, items)
+        listViewFavorite.adapter = ItemAdapter(this.context, items)
     }
 
 

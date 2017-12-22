@@ -7,21 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import dmt.appsolution.co.dmt.R
-import dmt.appsolution.co.dmt.itemList.ItemDomicile
+import dmt.appsolution.co.dmt.itemList.ItemRestaurant
 
-class ItemAdapterDomicile(var context:Context, private var  items:List<ItemDomicile>) : BaseAdapter(){
-    var itemsDomicile: List<ItemDomicile>? = null
+class ItemAdapter(var context:Context, private var  items:List<ItemRestaurant>) : BaseAdapter(){
+    var itemsRestaurant: List<ItemRestaurant>? = null
 
     init {
-        this.itemsDomicile = items
+        this.itemsRestaurant = items
     }
 
     override fun getCount(): Int {
-        return this.itemsDomicile!!.size
+        return this.itemsRestaurant!!.size
     }
 
     override fun getItem(position: Int): Any {
-        return this.itemsDomicile!![position]
+        return this.itemsRestaurant!![position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -38,7 +38,7 @@ class ItemAdapterDomicile(var context:Context, private var  items:List<ItemDomic
         val descriptionDomicile = rowView.findViewById<TextView>(R.id.txtDescripDomicile)
         val ratingBar = rowView.findViewById<RatingBar>(R.id.ratingBarDomicile)
         val btnViewDomicile = rowView.findViewById<ImageButton>(R.id.btnViewDomicile)
-        val item = this.itemsDomicile!![position]
+        val item = this.itemsRestaurant!![position]
         imageDomicile.setImageResource(item.imagen)
         titleDomicile.text = item.titulo
         descriptionDomicile.text = item.descripcion
