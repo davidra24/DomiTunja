@@ -14,25 +14,17 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageTraffic"
-                android:layout_width="match_parent"
-                android:layout_height="117dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:id="@+id/imageMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:paddingLeft="0dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/img_item_desc"
                 android:src="@drawable/traffic" />
-            <ImageView
-                android:id="@+id/imageTraffic1"
-                android:layout_width="match_parent"
-                android:layout_height="117dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="0dp"
-                android:layout_weight="1"
-                android:contentDescription="@string/img_item_desc"
-                android:src="@drawable/traffic" />
+
+
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
