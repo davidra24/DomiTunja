@@ -12,6 +12,7 @@ import dmt.appsolution.co.dmt.adapters.ItemAdapterDomicile
 import dmt.appsolution.co.dmt.itemList.ItemDomicile
 import dmt.appsolution.co.dmt.R
 import kotlinx.android.synthetic.main.activity_domicile_item.*
+import kotlinx.android.synthetic.main.fragment_domicile.*
 
 class DomicileFragment : Fragment(), OnMapReadyCallback {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
