@@ -17,8 +17,8 @@
         android:protectionLevel="signature" />
 
     <application
-        android:fullBackupContent="true"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -39,7 +39,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MenuActivity" />
-        <activity android:name=".itemList.ItemDomicileLayout"></activity>
+        <activity android:name=".itemList.ItemDomicileLayout" />
+        <activity android:name=".activities.RestaurantActivity"></activity>
     </application>
 
 </manifest>
