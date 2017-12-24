@@ -28,16 +28,13 @@
 
     <ScrollView
         android:layout_width="368dp"
-        android:layout_height="467dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="505dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -245,14 +242,61 @@
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapRestaurant"
-                android:layout_width="0dp"
-                android:layout_height="260dp"
+                android:layout_width="345dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/layoutDown"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.571"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+
+            <LinearLayout
+                android:id="@+id/layoutDown"
+                android:layout_width="352dp"
+                android:layout_height="81dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    app:srcCompat="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/imgPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    app:srcCompat="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/imgWeb"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    app:srcCompat="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/imgMail"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    app:srcCompat="@color/colorPrimary" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapViewStreet"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+            </LinearLayout>
 
         </android.support.constraint.ConstraintLayout>
 
