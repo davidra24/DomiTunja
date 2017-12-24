@@ -40,8 +40,10 @@ class DomicileFragment : Fragment(), OnMapReadyCallback {
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
-        map!!.isMyLocationEnabled = true
-        map.uiSettings.isZoomControlsEnabled = true
+        map!!.uiSettings.setAllGesturesEnabled(true)
+        map.isMyLocationEnabled = true
+        //map.uiSettings.isZoomControlsEnabled = true
+        //map.uiSettings.
     }
 
     override fun onResume() {

@@ -7,7 +7,7 @@
     tools:context="dmt.appsolution.co.dmt.activities.MenuActivity">
 
     <ImageView
-        android:id="@+id/imageViewBarDMT"
+        android:id="@+id/imageViewBarDMTMenu"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
         android:contentDescription="@string/bar_menu_desc"
@@ -17,16 +17,16 @@
         app:srcCompat="@drawable/top_bar_background" />
 
     <ImageView
-        android:id="@+id/imageViewDMTIcon"
+        android:id="@+id/imageViewIconDMTMenu"
         android:layout_width="297dp"
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/image_bar_desc"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewBarDMT"
-        app:layout_constraintStart_toStartOf="@+id/imageViewBarDMT"
-        app:layout_constraintTop_toTopOf="@+id/imageViewBarDMT"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewBarDMTMenu"
+        app:layout_constraintStart_toStartOf="@+id/imageViewBarDMTMenu"
+        app:layout_constraintTop_toTopOf="@+id/imageViewBarDMTMenu"
         app:srcCompat="@drawable/top_bar_image" />
 
     <TabHost
@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewDMTIcon">
+        app:layout_constraintTop_toBottomOf="@+id/imageViewIconDMTMenu">
 
         <LinearLayout
             android:layout_width="match_parent"

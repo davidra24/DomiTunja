@@ -2,11 +2,13 @@ package dmt.appsolution.co.dmt.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import dmt.appsolution.co.dmt.R
+import dmt.appsolution.co.dmt.activities.RestaurantActivity
 import dmt.appsolution.co.dmt.itemList.ItemRestaurant
 
 class ItemAdapter(var context:Context, private var  items:List<ItemRestaurant>) : BaseAdapter(){
@@ -44,6 +46,9 @@ class ItemAdapter(var context:Context, private var  items:List<ItemRestaurant>) 
         descriptionDomicile.text = item.descripcion
         ratingBar.rating = item.rating.toFloat()
         btnViewDomicile.setImageResource(item.masInfo)
+        btnViewDomicile.setOnClickListener{
+            context.startActivity(Intent(context, RestaurantActivity::class.java))
+        }
         return rowView
     }
 
