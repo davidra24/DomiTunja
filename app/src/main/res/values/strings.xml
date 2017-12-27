@@ -14,4 +14,7 @@
     <string name="button_view_item">Boton vista item</string>
     <string name="desc_rest_item">Descripcion restaurante item</string>
     <string name="type_food">Tipo de Comida</string>
+    <string name="twitter_icon_text">\@domitunja</string>
+    <string name="facebook_icon_text">domitunja</string>
+    <string name="mail_icon_text">¿Quieres Participar?</string>
 </resources>
