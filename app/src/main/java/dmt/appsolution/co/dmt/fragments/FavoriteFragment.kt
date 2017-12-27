@@ -2,6 +2,7 @@ package dmt.appsolution.co.dmt.fragments
 
 
 import android.annotation.SuppressLint
+import android.graphics.Point
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +12,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.adapters.ItemAdapter
-import dmt.appsolution.co.dmt.itemList.ItemRestaurant
+import dmt.appsolution.co.dmt.entity.Constants
+import dmt.appsolution.co.dmt.entity.ItemRestaurant
+import kotlinx.android.synthetic.main.fragment_domicile.*
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 /**
@@ -35,13 +38,16 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
 
     private fun fillListFavorite(){
         val items: MutableList<ItemRestaurant> = mutableListOf()
-        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante",
-                "Cra 12 #34-55", 5, R.drawable.item_arrow))
-        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante",
-                "Cra 12 #34-55", 3, R.drawable.item_arrow))
-        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante",
-                "Cra 12 #34-55", 4, R.drawable.item_arrow))
-        listViewFavorite.adapter = ItemAdapter(this.context, items)
+        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pollo",
+                "Asadero", 5, "Todo tipo de pollo", false, "www.labrasaroja.com/",
+                "123", "pollo@gmail.com", Constants.CHICKEN_FOOD, Point(100, 100)))
+        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Carne",
+                "Carnes", 2, "Todo tipo de Carne", false, "www.labrasaroja.com/",
+                "123", "pollo@gmail.com", Constants.MEAT_FOOD, Point(100, 100)))
+        items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pez",
+                "Pescado", 5, "Todo tipo de Pez", false, "www.labrasaroja.com/",
+                "123", "pollo@gmail.com", Constants.FISH_FOOD, Point(100, 100)))
+        listViewFavorite.adapter = ItemAdapter(this.activity, items)
     }
 
 

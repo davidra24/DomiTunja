@@ -30,7 +30,6 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
         map!!.isMyLocationEnabled = true
-        //map.uiSettings.isZoomControlsEnabled = true
     }
 
     override fun onResume() {

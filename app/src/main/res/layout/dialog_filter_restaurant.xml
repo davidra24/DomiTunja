@@ -46,8 +46,8 @@
         android:textStyle="bold" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="150dp"
+        android:id="@+id/spinnerFilter"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_weight="1" />
