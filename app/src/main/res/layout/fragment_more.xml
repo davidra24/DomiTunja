@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_splash"
+    android:orientation="vertical"
     tools:context="dmt.appsolution.co.dmt.fragments.RecommendedFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -10,69 +12,92 @@
     <ImageView
         android:id="@+id/imageViewBackgroundMore"
         android:layout_width="0dp"
-        android:layout_height="@dimen/more_img_height"
+        android:layout_height="401dp"
+        android:layout_marginBottom="9dp"
         android:background="@drawable/background_splash"
         android:contentDescription="@string/img_splashscreen"
         android:src="@drawable/background_splash"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayoutMore"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewIconMore"
         android:layout_width="0dp"
-        android:layout_height="@dimen/more_icon_height"
-        android:layout_marginTop="8dp"
+        android:layout_height="390dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/img_splashscreen"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayoutMore"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.833"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewBackgroundMore" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayoutMore"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/linear_more_height"
-        android:orientation="vertical"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="209dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="52dp"
+        android:background="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewIconMore">
-
-        <ImageButton
-            android:id="@+id/imageButtonTwitter"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/cardview_light_background"
-            android:scaleType="fitCenter"
-            android:src="@drawable/twitter_icon"
-            android:tint="@color/colorPrimary" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackgroundMore">
 
         <ImageButton
             android:id="@+id/imageButtonFacebook"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/more_button"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:adjustViewBounds="false"
             android:backgroundTint="@color/cardview_light_background"
             android:cropToPadding="false"
             android:scaleType="fitCenter"
             android:src="@drawable/facebook_icon"
-            android:tint="@color/colorPrimary" />
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/imageButtonTwitter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButtonTwitter"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/more_button"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageButtonFacebook"
+            android:backgroundTint="@color/cardview_light_background"
+            android:scaleType="fitCenter"
+            android:src="@drawable/twitter_icon"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/imageButtonMail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButtonMail"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/more_button"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageButtonTwitter"
             android:adjustViewBounds="false"
             android:backgroundTint="@color/cardview_light_background"
             android:cropToPadding="false"
             android:scaleType="fitCenter"
             android:src="@drawable/mensaje_suggest_icon"
-            android:tint="@color/colorPrimary" />
-    </LinearLayout>
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

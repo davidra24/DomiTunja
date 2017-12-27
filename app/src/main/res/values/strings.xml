@@ -14,4 +14,8 @@
     <string name="button_view_item">Boton vista item</string>
     <string name="desc_rest_item">Descripcion restaurante item</string>
     <string name="type_food">Tipo de Comida</string>
+    <string name="title_dialog_filter">Filtrar</string>
+    <string name="dialog_filter_accept">Aceptar</string>
+    <string name="dialog_filter_cancel">Cancelar</string>
+    <string name="rate_this_restaurant">Califica este sitio</string>
 </resources>

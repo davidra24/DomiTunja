@@ -1,6 +1,8 @@
 package dmt.appsolution.co.dmt.fragments
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +13,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import dmt.appsolution.co.dmt.adapters.ItemAdapter
 import dmt.appsolution.co.dmt.itemList.ItemRestaurant
 import dmt.appsolution.co.dmt.R
+import dmt.appsolution.co.dmt.dialog.DialogFilter
 import kotlinx.android.synthetic.main.fragment_domicile.*
 
 class DomicileFragment : Fragment(), OnMapReadyCallback {
@@ -22,7 +25,12 @@ class DomicileFragment : Fragment(), OnMapReadyCallback {
     @SuppressLint("MissingPermission")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        startMap(savedInstanceState)
         fillListDomicile()
+        buttonFilterDomicile.setOnClickListener{DialogFilter().show(fragmentManager,tag)}
+    }
+
+    private fun startMap(savedInstanceState: Bundle?){
         mapViewDomicile.onCreate(savedInstanceState)
         mapViewDomicile.getMapAsync(this)
     }
@@ -42,8 +50,6 @@ class DomicileFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap?) {
         map!!.uiSettings.setAllGesturesEnabled(true)
         map.isMyLocationEnabled = true
-        //map.uiSettings.isZoomControlsEnabled = true
-        //map.uiSettings.
     }
 
     override fun onResume() {

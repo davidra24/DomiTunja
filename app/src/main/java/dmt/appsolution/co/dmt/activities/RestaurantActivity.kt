@@ -25,6 +25,7 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
     override fun onStreetViewPanoramaReady(map: StreetViewPanorama?) {
         map!!.isStreetNamesEnabled = true
     }
+
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
         map!!.isMyLocationEnabled = true

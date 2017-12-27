@@ -32,7 +32,7 @@ class ItemAdapter(var context:Context, private var  items:List<ItemRestaurant>) 
 
     @SuppressLint("InflateParams", "ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-        var rowView = convertView
+        var rowView: View? = convertView
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         rowView = layoutInflater.inflate(R.layout.activity_domicile_item, null)
         val imageDomicile = rowView.findViewById<ImageView>(R.id.imageDomicile)
