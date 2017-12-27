@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.activities.RestaurantActivity
-import dmt.appsolution.co.dmt.itemList.ItemRestaurant
+import dmt.appsolution.co.dmt.entity.ItemRestaurant
 
 class ItemAdapter(var context:Context, private var  items:List<ItemRestaurant>) : BaseAdapter(){
     var itemsRestaurant: List<ItemRestaurant>? = null
@@ -32,7 +32,7 @@ class ItemAdapter(var context:Context, private var  items:List<ItemRestaurant>) 
 
     @SuppressLint("InflateParams", "ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-        var rowView = convertView
+        var rowView: View? = convertView
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         rowView = layoutInflater.inflate(R.layout.activity_domicile_item, null)
         val imageDomicile = rowView.findViewById<ImageView>(R.id.imageDomicile)
@@ -41,11 +41,10 @@ class ItemAdapter(var context:Context, private var  items:List<ItemRestaurant>) 
         val ratingBar = rowView.findViewById<RatingBar>(R.id.ratingBarDomicile)
         val btnViewDomicile = rowView.findViewById<ImageButton>(R.id.btnViewDomicile)
         val item = this.itemsRestaurant!![position]
-        imageDomicile.setImageResource(item.imagen)
-        titleDomicile.text = item.titulo
-        descriptionDomicile.text = item.descripcion
+        imageDomicile.setImageResource(item.image)
+        titleDomicile.text = item.name
+        descriptionDomicile.text = item.summary
         ratingBar.rating = item.rating.toFloat()
-        btnViewDomicile.setImageResource(item.masInfo)
         btnViewDomicile.setOnClickListener{
             context.startActivity(Intent(context, RestaurantActivity::class.java))
         }

@@ -10,9 +10,10 @@
 
     <ImageView
         android:id="@+id/imageViewIBarDMTRestaurant"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bar_height"
         android:layout_weight="1"
+        android:background="@drawable/top_bar_background"
         android:src="@drawable/top_bar_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +21,8 @@
 
     <ImageView
         android:id="@+id/imageViewIconDMTRestaurant"
-        android:layout_width="315dp"
-        android:layout_height="45dp"
+        android:layout_width="@dimen/icon_bar_width"
+        android:layout_height="@dimen/icon_bar_height"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -38,7 +39,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewIBarDMTRestaurant"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/layoutScrollView"
@@ -51,7 +52,7 @@
                 android:id="@+id/imageViewRestaurant"
                 android:layout_width="0dp"
                 android:layout_height="230dp"
-                android:background="@drawable/photo_apartament"
+                android:background="@drawable/tinga_pollo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -81,6 +82,7 @@
                 android:layout_weight="1"
                 android:text="Nombre restauranta"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorAccent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.15"
                 app:layout_constraintStart_toStartOf="parent"
@@ -89,6 +91,7 @@
             <RatingBar
                 android:id="@+id/ratingBarRestauant"
                 style="@style/OrangeRatingBar"
+                android:isIndicator="true"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:layout_marginEnd="8dp"
@@ -112,96 +115,175 @@
 
             <LinearLayout
                 android:id="@+id/linearLayoutIcons"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="79dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toTopOf="@+id/mapRestaurant"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent">
 
-                <Button
-                    android:id="@+id/buttonAddFavorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="79dp"
-                    android:layout_alignBaseline="@+id/buttonWebSite"
-                    android:layout_alignBottom="@+id/buttonWebSite"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:drawablePadding="6dp"
-                    android:drawableTop="@drawable/add_favoritos_icon"
-                    android:text="+ Favoritos"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textColor="@color/colorPrimary"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewRestaurant" />
-
-                <Button
-                    android:id="@+id/buttonShare"
-                    android:layout_width="wrap_content"
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignTop="@+id/buttonAddFavorite"
-                    android:layout_toEndOf="@+id/buttonAddFavorite"
-                    android:layout_toRightOf="@+id/buttonAddFavorite"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:drawablePadding="6dp"
-                    android:drawableTop="@drawable/compartir_icon"
-                    android:text="Compartir"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textColor="@color/colorPrimary"
-                    app:layout_constraintStart_toEndOf="@+id/buttonAddFavorite"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewRestaurant" />
+                    android:layout_weight="1">
 
-                <Button
-                    android:id="@+id/buttonWebSite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_toEndOf="@+id/buttonShare"
-                    android:layout_toRightOf="@+id/buttonShare"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:drawablePadding="6dp"
-                    android:drawableTop="@drawable/www_button"
-                    android:text="WebSite"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textColor="@color/colorPrimary"
-                    app:layout_constraintStart_toEndOf="@+id/buttonShare"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewRestaurant" />
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="37dp"
+                        android:layout_height="33dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/add_favoritos_icon" />
 
-                <Button
-                    android:id="@+id/buttonCallInformation"
-                    android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/buttonAddFavorite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="64dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="+ Favoritos"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignTop="@+id/buttonShare"
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginStart="14dp"
-                    android:layout_toEndOf="@+id/buttonWebSite"
-                    android:layout_toRightOf="@+id/buttonWebSite"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:drawablePadding="6dp"
-                    android:drawableTop="@drawable/llamar_icon"
-                    android:text="Llamar"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textColor="@color/colorPrimary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/buttonWebSite"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewRestaurant" />
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="37dp"
+                        android:layout_height="33dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/compartir_icon" />
+
+                    <Button
+                        android:id="@+id/buttonShare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="6dp"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="Compartir"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="37dp"
+                        android:layout_height="33dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_website" />
+
+                    <Button
+                        android:id="@+id/buttonWebSite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="6dp"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="WebSite"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="37dp"
+                        android:layout_height="33dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/llamar_icon" />
+
+                    <Button
+                        android:id="@+id/buttonCallInformation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="6dp"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="Llamar"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
             </LinearLayout>
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapRestaurant"
                 android:layout_width="0dp"
-                android:layout_height="150dp"
+                android:layout_height="180dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.571"
                 app:layout_constraintStart_toStartOf="parent"
@@ -209,22 +291,24 @@
 
             <LinearLayout
                 android:id="@+id/linearLayoutOptionsRestaurant"
-                android:layout_width="382dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:divider="@drawable/divider_drawable"
                 android:orientation="vertical"
+                android:showDividers="middle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mapRestaurant">
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewDescriptionMenu"
-                        android:layout_width="38dp"
-                        android:layout_height="42dp"
+                        android:layout_width="@dimen/restaurant_icon_width"
+                        android:layout_height="@dimen/restaurant_icon_height"
                         android:layout_marginBottom="8dp"
                         android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
@@ -238,17 +322,16 @@
                         android:id="@+id/buttonDescriptionInformation"
                         android:layout_width="226dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:layout_marginEnd="24dp"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="24dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
+                        android:gravity="start|center"
                         android:text="Button"
-                        android:textAlignment="textStart"
-                        android:gravity="start"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
                         android:textColor="@color/colorPrimaryDark"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -259,13 +342,13 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewNumber"
-                        android:layout_width="38dp"
-                        android:layout_height="42dp"
+                        android:layout_width="@dimen/restaurant_icon_width"
+                        android:layout_height="@dimen/restaurant_icon_height"
                         android:layout_marginBottom="8dp"
                         android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
@@ -280,17 +363,16 @@
                         android:id="@+id/buttonNumber"
                         android:layout_width="226dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:layout_marginEnd="24dp"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="24dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
+                        android:gravity="start|center"
                         android:text="Button"
                         android:textAlignment="textStart"
-                        android:gravity="start"
+                        android:textAllCaps="false"
                         android:textColor="@color/colorPrimaryDark"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -300,13 +382,13 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewWebSite"
-                        android:layout_width="38dp"
-                        android:layout_height="42dp"
+                        android:layout_width="@dimen/restaurant_icon_width"
+                        android:layout_height="@dimen/restaurant_icon_height"
                         android:layout_marginBottom="8dp"
                         android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
@@ -320,16 +402,15 @@
                         android:id="@+id/buttonWebSiteInformation"
                         android:layout_width="226dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:layout_marginEnd="24dp"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="24dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
                         android:background="@android:color/transparent"
+                        android:gravity="start|center"
                         android:text="Button"
                         android:textAlignment="textStart"
-                        android:gravity="start"
+                        android:textAllCaps="false"
                         android:textColor="@color/colorPrimaryDark"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -339,13 +420,13 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewContact"
-                        android:layout_width="38dp"
-                        android:layout_height="42dp"
+                        android:layout_width="@dimen/restaurant_icon_width"
+                        android:layout_height="@dimen/restaurant_icon_height"
                         android:layout_marginBottom="8dp"
                         android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
@@ -359,17 +440,16 @@
                         android:id="@+id/buttonContactInformation"
                         android:layout_width="226dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:layout_marginEnd="24dp"
-                        android:layout_marginLeft="24dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="24dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="8dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
+                        android:gravity="start|center"
                         android:text="Button"
                         android:textAlignment="textStart"
-                        android:gravity="start"
+                        android:textAllCaps="false"
                         android:textColor="@color/colorPrimaryDark"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -380,7 +460,7 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:layout_weight="1">
 
                     <TextView
@@ -390,7 +470,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:text="TextView"
+                        android:text="@string/rate_this_restaurant"
                         android:textColor="@color/colorPrimaryDark"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -400,11 +480,11 @@
                         android:id="@+id/ratingBarInformation"
                         style="@style/OrangeRatingBar"
                         android:layout_width="wrap_content"
-                        android:layout_height="33dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:layout_marginEnd="6dp"
-                        android:layout_marginRight="6dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginRight="6dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
                         android:numStars="5"
@@ -421,7 +501,6 @@
                 android:id="@+id/mapStreeRestaurant"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

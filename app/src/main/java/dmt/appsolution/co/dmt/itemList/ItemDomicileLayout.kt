@@ -9,18 +9,18 @@ import dmt.appsolution.co.dmt.activities.RestaurantActivity
 
 class ItemDomicileLayout : AppCompatActivity() {
 
-    val info:ImageButton = R.id.btnViewDomicile as ImageButton
+    //val info:ImageButton = R.id.btnViewDomicile as ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_domicile_item)
-        actions()
+       // actions()
     }
     /////////Intent aun no lleva a otra actividad
-    private fun actions(){
+    /*private fun actions(){
         info.setOnClickListener{
             val intent = Intent(this, RestaurantActivity::class.java)
             startActivity(intent)
         }
-    }
+    }*/
 }

@@ -59,9 +59,6 @@ class MenuActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, TabHos
 
     override fun onPageSelected(position: Int) {
         tabHost.currentTab = position
-        //val tabView: View? = tabHost.currentView
-        //val positionTab = tabHost!!.left - (horizontalScrollViewMenu.width - tabHost.width) / 2
-        //horizontalScrollViewMenu.smoothScrollTo(positionTab, 0)
         horizontalScrollViewMenu.smoothScrollTo(tabHost.width * (position / (3 - 1)), 0)
     }
 

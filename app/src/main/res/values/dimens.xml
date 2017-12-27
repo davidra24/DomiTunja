@@ -5,7 +5,13 @@
     <dimen name="list_view_height_domicile">291dp</dimen>
     <dimen name="list_view_height_favorite">316dp</dimen>
     <dimen name="divider_list_height">3dp</dimen>
-    <dimen name="more_img_height">387dp</dimen>
-    <dimen name="more_icon_height">385dp</dimen>
+    <dimen name="more_img_height">460dp</dimen>
+    <dimen name="more_icon_height">455dp</dimen>
     <dimen name="linear_more_height">160dp</dimen>
+    <dimen name="more_button">60dp</dimen>
+    <dimen name="bar_height">56dp</dimen>
+    <dimen name="icon_bar_width">297dp</dimen>
+    <dimen name="icon_bar_height">45dp</dimen>
+    <dimen name="restaurant_icon_width">30dp</dimen>
+    <dimen name="restaurant_icon_height">30dp</dimen>
 </resources>

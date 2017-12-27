@@ -8,18 +8,18 @@
 
     <ImageView
         android:id="@+id/imageViewBarDMTMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="56dp"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bar_height"
+        android:background="@drawable/top_bar_background"
         android:contentDescription="@string/bar_menu_desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/top_bar_background" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewIconDMTMenu"
-        android:layout_width="297dp"
-        android:layout_height="45dp"
+        android:layout_width="@dimen/icon_bar_width"
+        android:layout_height="@dimen/icon_bar_height"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -31,7 +31,7 @@
 
     <TabHost
         android:id="@+id/tabHost"
-        android:layout_width="384dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
