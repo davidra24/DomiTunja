@@ -7,9 +7,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback
 import com.google.android.gms.maps.StreetViewPanorama
+import com.google.android.gms.maps.model.LatLng
 import dmt.appsolution.co.dmt.R
 import kotlinx.android.synthetic.main.activity_restaurant.*
-import kotlinx.android.synthetic.main.fragment_domicile.*
 
 class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetViewPanoramaReadyCallback {
 
@@ -24,12 +24,13 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
 
     override fun onStreetViewPanoramaReady(map: StreetViewPanorama?) {
         map!!.isStreetNamesEnabled = true
+        map.setPosition(LatLng(37.765927, -122.449972))
     }
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
         map!!.isMyLocationEnabled = true
-        map.uiSettings.isZoomControlsEnabled = true
+        //map.uiSettings.isZoomControlsEnabled = true
     }
 
     override fun onResume() {
