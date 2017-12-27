@@ -10,14 +10,14 @@ public class ItemRestaurant {
     private String details;
     private boolean favorite;
     private String webSite;
-    private String number;
+    private int number;
     private String mail;
     private String typeFood;
     private Point location;
 
     public ItemRestaurant(int image, String name, String summary, int rating,
                           String details, boolean favorite, String webSite,
-                          String number, String mail, String typeFood, Point location) {
+                          int number, String mail, String typeFood, Point location) {
         this.image = image;
         this.name = name;
         this.summary = summary;
@@ -87,11 +87,11 @@ public class ItemRestaurant {
         this.webSite = webSite;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 

@@ -40,13 +40,13 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
         val items: MutableList<ItemRestaurant> = mutableListOf()
         items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pollo",
                 "Asadero", 5, "Todo tipo de pollo", false, "www.labrasaroja.com/",
-                "123", "pollo@gmail.com", Constants.CHICKEN_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.CHICKEN_FOOD, Point(100, 100)))
         items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Carne",
                 "Carnes", 2, "Todo tipo de Carne", false, "www.labrasaroja.com/",
-                "123", "pollo@gmail.com", Constants.MEAT_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.MEAT_FOOD, Point(100, 100)))
         items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pez",
                 "Pescado", 5, "Todo tipo de Pez", false, "www.labrasaroja.com/",
-                "123", "pollo@gmail.com", Constants.FISH_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.FISH_FOOD, Point(100, 100)))
         listViewFavorite.adapter = ItemAdapter(this.activity, items)
     }
 
@@ -54,12 +54,8 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
-        //map!!.mapType = GoogleMap.MAP_TYPE_HYBRID
-        map!!.isMyLocationEnabled = true
-        //map.isTrafficEnabled = true
-        //map.isIndoorEnabled = true
-        //map.isBuildingsEnabled = true
-        map.uiSettings.isZoomControlsEnabled = true
+        map!!.uiSettings.setAllGesturesEnabled(true)
+        map.isMyLocationEnabled = true
     }
 
 

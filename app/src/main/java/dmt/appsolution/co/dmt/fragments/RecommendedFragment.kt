@@ -31,22 +31,22 @@ class RecommendedFragment : Fragment() {
         val items: MutableList<ItemRestaurant> = mutableListOf()
         items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pollo",
                 "Asadero", 5, "Todo tipo de pollo", false, "www.labrasaroja.com/",
-                "123", "pollo@gmail.com", Constants.CHICKEN_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.CHICKEN_FOOD, Point(100, 100)))
         items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Carne",
                 "Carnes", 2, "Todo tipo de Carne", false, "www.labrasaroja.com/",
-                "123", "pollo@gmail.com", Constants.MEAT_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.MEAT_FOOD, Point(100, 100)))
         items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pez",
                 "Pescado", 5, "Todo tipo de Pez", false, "www.labrasaroja.com/",
-                "123", "pollo@gmail.com", Constants.FISH_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.FISH_FOOD, Point(100, 100)))
         items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pollo",
                 "Asadero", 5, "Todo tipo de pollo", false, "www.labrasaroja.com/",
-                "123", "pollo@gmail.com", Constants.CHICKEN_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.CHICKEN_FOOD, Point(100, 100)))
         items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Carne",
                 "Carnes", 2, "Todo tipo de Carne", false, "www.labrasaroja.com/",
-                "123", "pollo@gmail.com", Constants.MEAT_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.MEAT_FOOD, Point(100, 100)))
         items.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pez",
                 "Pescado", 5, "Todo tipo de Pez", false, "www.labrasaroja.com/",
-                "123", "pollo@gmail.com", Constants.FISH_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.FISH_FOOD, Point(100, 100)))
         listViewRecommended.adapter = ItemAdapter(this.activity, items)
     }
 
