@@ -28,11 +28,11 @@ class MoreFragment : Fragment() {
     }
 
     private fun startButton(){
-        facebook_button.setOnClickListener(View.OnClickListener {
+        /*facebook_button.setOnClickListener(View.OnClickListener {
 
             val intent = openFacebook(this.context)
             startActivity(intent)
-        })
+        })*/
 
 
     }

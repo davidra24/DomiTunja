@@ -5,5 +5,4 @@ package dmt.appsolution.co.dmt.entity
  */
 interface NoticeDialogListener {
     fun onAcceptButton()
-    fun onCancelButton()
 }

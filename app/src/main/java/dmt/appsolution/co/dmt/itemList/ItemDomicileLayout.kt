@@ -16,7 +16,7 @@ class ItemDomicileLayout : AppCompatActivity() {
         setContentView(R.layout.activity_domicile_item)
        // actions()
     }
-    /////////Intent aun no lleva a otra actividad
+    /////////Intent aun no lleva filterFood otra actividad
     /*private fun actions(){
         info.setOnClickListener{
             val intent = Intent(this, RestaurantActivity::class.java)

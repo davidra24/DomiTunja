@@ -7,13 +7,15 @@ import android.view.View
 import android.widget.TabHost
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.adapters.FragmentAdapter
+import dmt.appsolution.co.dmt.entity.NoticeDialogListener
 import dmt.appsolution.co.dmt.fragments.DomicileFragment
 import dmt.appsolution.co.dmt.fragments.FavoriteFragment
 import dmt.appsolution.co.dmt.fragments.RecommendedFragment
 import dmt.appsolution.co.dmt.fragments.MoreFragment
 import kotlinx.android.synthetic.main.activity_menu.*
 
-class MenuActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, TabHost.OnTabChangeListener {
+class MenuActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, TabHost.OnTabChangeListener, NoticeDialogListener {
+    private val listF: MutableList<android.support.v4.app.Fragment> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +26,6 @@ class MenuActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, TabHos
     }
 
     private fun initVIewPager(){
-        val listF: MutableList<android.support.v4.app.Fragment> = mutableListOf()
         listF.add(DomicileFragment())
         listF.add(RecommendedFragment())
         listF.add(FavoriteFragment())
@@ -48,7 +49,6 @@ class MenuActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, TabHos
     }
 
     override fun onTabChanged(p0: String?) {
-        viewPagerMenu.currentItem = tabHost.currentTab
     }
 
     override fun onPageScrollStateChanged(state: Int) {
@@ -73,6 +73,11 @@ class MenuActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, TabHos
             fakeView.minimumWidth = 0
             return  fakeView
         }
-
     }
+
+    override fun onAcceptButton() {
+        var domicileFragment: DomicileFragment = listF[0] as DomicileFragment
+        domicileFragment.filterFood()
+    }
+
 }

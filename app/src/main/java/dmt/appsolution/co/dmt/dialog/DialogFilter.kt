@@ -7,8 +7,6 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.entity.Constants
 import dmt.appsolution.co.dmt.entity.NoticeDialogListener
@@ -25,7 +23,7 @@ class DialogFilter: DialogFragment() {
         builder.setView(activity.layoutInflater.inflate(R.layout.dialog_filter_restaurant, null))
         var dialog: AlertDialog = builder.create()
         dialog.setOnShowListener(DialogInterface.OnShowListener {
-            //noticeDialog = dialog as NoticeDialogListener
+            noticeDialog = activity as NoticeDialogListener
             startSpinnerFilter(dialog)
             buttonsListener(dialog)
         })
@@ -43,7 +41,10 @@ class DialogFilter: DialogFragment() {
     }
 
     private fun buttonsListener(dialog: Dialog){
-        dialog.buttonAcceptFilter.setOnClickListener{Toast.makeText(context, dialog.ownerActivity.toString(), Toast.LENGTH_SHORT).show()}
+        dialog.buttonAcceptFilter.setOnClickListener{
+            Constants.FOOD_FILTER = dialog.spinnerFilter.selectedItem.toString()
+            noticeDialog!!.onAcceptButton()}
+        dialog.buttonCancelFilter.setOnClickListener{this.dismiss()}
     }
 
 

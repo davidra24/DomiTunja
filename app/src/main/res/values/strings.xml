@@ -17,4 +17,8 @@
     <string name="twitter_icon_text">\@domitunja</string>
     <string name="facebook_icon_text">domitunja</string>
     <string name="mail_icon_text">¿Quieres Participar?</string>
+    <string name="rate_this_restaurant">Califica este sitio</string>
+    <string name="title_dialog_filter">Filtrar</string>
+    <string name="dialog_filter_accept">Aceptar</string>
+    <string name="dialog_filter_cancel">Cancelar</string>
 </resources>
