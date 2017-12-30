@@ -50,15 +50,15 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    fun fillTempRestaurants(){
+    private fun fillTempRestaurants(){
         Constants.restaurantList.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pollo",
                 "Asadero", 5, "Todo tipo de pollo", false, "www.labrasaroja.com/",
-                123, "pollo@gmail.com", Constants.CHICKEN_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.CHICKEN_FOOD, 5.532392303876586, -73.36294144392014))
         Constants.restaurantList.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Carne",
                 "Carnes", 2, "Todo tipo de Carne", false, "www.labrasaroja.com/",
-                123, "pollo@gmail.com", Constants.MEAT_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.MEAT_FOOD, 5.532213432951909, -73.36247071623802))
         Constants.restaurantList.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pez",
                 "Pescado", 5, "Todo tipo de Pez", false, "www.labrasaroja.com/",
-                123, "pollo@gmail.com", Constants.FISH_FOOD, Point(100, 100)))
+                123, "pollo@gmail.com", Constants.FISH_FOOD, 5.5322694969788975, -73.36216159164906))
     }
 }

@@ -32,6 +32,7 @@ class DialogFilter: DialogFragment() {
 
     private fun startSpinnerFilter(dialog: Dialog){
         var list:MutableList<String> = mutableListOf()
+        list.add(Constants.ALL_FOOD)
         list.add(Constants.CHICKEN_FOOD)
         list.add(Constants.MEAT_FOOD)
         list.add(Constants.FISH_FOOD)
@@ -43,7 +44,9 @@ class DialogFilter: DialogFragment() {
     private fun buttonsListener(dialog: Dialog){
         dialog.buttonAcceptFilter.setOnClickListener{
             Constants.FOOD_FILTER = dialog.spinnerFilter.selectedItem.toString()
-            noticeDialog!!.onAcceptButton()}
+            noticeDialog!!.onAcceptButton()
+            this.dismiss()
+        }
         dialog.buttonCancelFilter.setOnClickListener{this.dismiss()}
     }
 

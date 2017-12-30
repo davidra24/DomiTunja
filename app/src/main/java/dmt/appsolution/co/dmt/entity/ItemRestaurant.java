@@ -13,11 +13,12 @@ public class ItemRestaurant {
     private int number;
     private String mail;
     private String typeFood;
-    private Point location;
+    private double locationX;
+    private double locationY;
 
     public ItemRestaurant(int image, String name, String summary, int rating,
                           String details, boolean favorite, String webSite,
-                          int number, String mail, String typeFood, Point location) {
+                          int number, String mail, String typeFood, double locationX, double locationY) {
         this.image = image;
         this.name = name;
         this.summary = summary;
@@ -28,7 +29,8 @@ public class ItemRestaurant {
         this.number = number;
         this.mail = mail;
         this.typeFood = typeFood;
-        this.location = location;
+        this.locationX = locationX;
+        this.locationY = locationY;
     }
 
     public int getImage() {
@@ -111,11 +113,19 @@ public class ItemRestaurant {
         this.typeFood = typeFood;
     }
 
-    public Point getLocation() {
-        return location;
+    public double getLocationX() {
+        return locationX;
     }
 
-    public void setLocation(Point location) {
-        this.location = location;
+    public void setLocationX(double locationX) {
+        this.locationX = locationX;
+    }
+
+    public double getLocationY() {
+        return locationY;
+    }
+
+    public void setLocationY(double locationY) {
+        this.locationY = locationY;
     }
 }

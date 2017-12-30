@@ -5,7 +5,8 @@ package dmt.appsolution.co.dmt.entity
  */
 class Constants {
     companion object {
-        var FOOD_FILTER = "N/N"
+        var FOOD_FILTER = "Todo"
+        val ALL_FOOD: String = "Todo"
         val CHICKEN_FOOD: String = "Pollo"
         val MEAT_FOOD: String = "Carne"
         val FISH_FOOD: String = "Pescado"
