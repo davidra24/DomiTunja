@@ -29,10 +29,10 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
         fillCarousel(arr)
     }
 
-    fun fillCarousel(img:MutableList<Int>){
+    private fun fillCarousel(img:MutableList<Int>){
         var carouselPicker:CarouselPicker ?= findViewById(R.id.carouselRestaurant)
         var itemImageCarousel:MutableList<CarouselPicker.PickerItem> ?= mutableListOf()
-        for (i in 0..img.size-1){
+        for (i in 0 until img.size){
             itemImageCarousel!!.add(CarouselPicker.DrawableItem(img.get(i)))
         }
         var imageAdapter:CarouselPicker.CarouselViewAdapter = CarouselPicker.CarouselViewAdapter(this, itemImageCarousel, 0)

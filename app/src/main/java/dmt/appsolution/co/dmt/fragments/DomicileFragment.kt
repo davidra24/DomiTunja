@@ -31,8 +31,6 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
         super.onActivityCreated(savedInstanceState)
         startMap(savedInstanceState)
         filterFood()
-        validateAdapter()
-        setButtonImgFilter()
         buttonFilterDomicile.setOnClickListener{DialogFilter().show(fragmentManager,tag)}
     }
 
@@ -46,9 +44,12 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
         Constants.filterRestaurantList.clear()
         if (Constants.FOOD_FILTER == "Todo")
                 fillFilterList()
-        else
+        else {
             Constants.restaurantList.filter { it.typeFood == Constants.FOOD_FILTER }
                     .forEach { Constants.filterRestaurantList.add(it) }
+        }
+        validateAdapter()
+        setButtonImgFilter()
     }
 
     private fun fillFilterList() {
@@ -58,10 +59,11 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
 
     private fun validateAdapter() {
         if (itemAdapter == null) {
-            this.itemAdapter = ItemAdapter(activity, Constants.filterRestaurantList)
-            listViewDomicile.adapter = this.itemAdapter
-        }else
-            this.itemAdapter!!.notifyDataSetChanged()
+            itemAdapter = ItemAdapter(activity, Constants.filterRestaurantList)
+            listViewDomicile.adapter = itemAdapter
+        }else {
+            itemAdapter!!.notifyDataSetChanged()
+        }
     }
 
     private fun setButtonImgFilter() {
