@@ -1,5 +1,6 @@
 package dmt.appsolution.co.dmt.activities
 
+import `in`.goodiebag.carouselpicker.CarouselPicker
 import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_restaurant.*
 
 class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetViewPanoramaReadyCallback {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant)
@@ -20,6 +22,21 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
         mapStreeRestaurant.getStreetViewPanoramaAsync(this)
         mapRestaurant.onCreate(savedInstanceState)
         mapRestaurant.getMapAsync(this)
+        var arr:MutableList<Int> ?= mutableListOf()
+        arr!!.add(R.drawable.tinga_pollo)
+        arr.add(R.drawable.tinga_pollo)
+        arr.add(R.drawable.tinga_pollo)
+        fillCarousel(arr)
+    }
+
+    fun fillCarousel(img:MutableList<Int>){
+        var carouselPicker:CarouselPicker ?= findViewById(R.id.carouselRestaurant)
+        var itemImageCarousel:MutableList<CarouselPicker.PickerItem> ?= mutableListOf()
+        for (i in 0..img.size-1){
+            itemImageCarousel!!.add(CarouselPicker.DrawableItem(img.get(i)))
+        }
+        var imageAdapter:CarouselPicker.CarouselViewAdapter = CarouselPicker.CarouselViewAdapter(this, itemImageCarousel, 0)
+        carouselPicker!!.adapter=imageAdapter
     }
 
     override fun onStreetViewPanoramaReady(map: StreetViewPanorama?) {
