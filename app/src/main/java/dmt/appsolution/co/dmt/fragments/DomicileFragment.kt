@@ -50,6 +50,7 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
         }
         validateAdapter()
         setButtonImgFilter()
+        mapViewDomicile.getMapAsync(this)
     }
 
     private fun fillFilterList() {
@@ -77,7 +78,8 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
-        map!!.uiSettings.setAllGesturesEnabled(true)
+        map!!.clear()
+        map.uiSettings.setAllGesturesEnabled(true)
         map.isMyLocationEnabled = true
         for(restaurant in Constants.filterRestaurantList)
             map.addMarker(MarkerOptions().
