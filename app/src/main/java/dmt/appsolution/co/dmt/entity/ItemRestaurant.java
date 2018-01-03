@@ -11,7 +11,7 @@ public class ItemRestaurant implements Serializable{
     private String details;
     private boolean favorite;
     private String webSite;
-    private int number;
+    private String number;
     private String mail;
     private String typeFood;
     private double locationX;
@@ -19,7 +19,7 @@ public class ItemRestaurant implements Serializable{
 
     public ItemRestaurant(int image, String name, String summary, int rating,
                           String details, boolean favorite, String webSite,
-                          int number, String mail, String typeFood, double locationX, double locationY) {
+                          String number, String mail, String typeFood, double locationX, double locationY) {
         this.image = image;
         this.name = name;
         this.summary = summary;
@@ -90,11 +90,11 @@ public class ItemRestaurant implements Serializable{
         this.webSite = webSite;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

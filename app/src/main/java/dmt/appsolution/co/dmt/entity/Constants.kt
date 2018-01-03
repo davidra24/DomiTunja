@@ -10,6 +10,7 @@ class Constants {
         val CHICKEN_FOOD: String = "Pollo"
         val MEAT_FOOD: String = "Carne"
         val FISH_FOOD: String = "Pescado"
+        val DEFAULT_PHONE_NUMBER: String = "3191231234"
         var restaurantList: MutableList<ItemRestaurant> = mutableListOf()
         var filterRestaurantList: MutableList<ItemRestaurant> = mutableListOf()
         var recommendedRestaurantList: MutableList<ItemRestaurant> = mutableListOf()
