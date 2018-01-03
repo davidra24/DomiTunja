@@ -28,12 +28,17 @@ class MoreFragment : Fragment() {
     }
 
     private fun startButton(){
-        /*facebook_button.setOnClickListener(View.OnClickListener {
+        buttonFacebook.setOnClickListener(View.OnClickListener {
 
             val intent = openFacebook(this.context)
             startActivity(intent)
-        })*/
+        })
 
+        buttonTwitter.setOnClickListener(View.OnClickListener {
+
+            val intent = openTwitter(this.context)
+            startActivity(intent)
+        })
 
     }
 
@@ -44,6 +49,16 @@ class MoreFragment : Fragment() {
         }catch (e:Exception){
             return Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/appsolutionco/"))
         }
+    }
+
+    private fun openTwitter(context:Context):Intent{
+        try {
+            context.packageManager.getPackageInfo("com.twitter.android", 0)
+            return Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=519786756"))
+        } catch (e: Exception) {
+            return Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/appsolutionco"))
+        }
+
     }
 
 

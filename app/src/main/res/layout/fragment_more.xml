@@ -10,10 +10,11 @@
     <ImageView
         android:id="@+id/imageViewBackgroundMore"
         android:layout_width="0dp"
-        android:layout_height="@dimen/more_img_height"
+        android:layout_height="362dp"
         android:background="@drawable/background_splash"
         android:contentDescription="@string/img_splashscreen"
         android:src="@drawable/background_splash"
+        app:layout_constraintBottom_toTopOf="@+id/twitterContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,7 +22,7 @@
     <ImageView
         android:id="@+id/imageViewIconMore"
         android:layout_width="0dp"
-        android:layout_height="@dimen/more_icon_height"
+        android:layout_height="355dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/img_splashscreen"
         android:src="@drawable/logo"
@@ -29,5 +30,210 @@
         app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewBackgroundMore" />
+
+    <LinearLayout
+        android:id="@+id/mailContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/more_button"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facebookContainer">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/editTextMail"
+                android:layout_width="168dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:ems="10"
+                android:text="@string/mail_icon_text"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/buttonMail"
+                app:layout_constraintHorizontal_bias="0.234"
+                app:layout_constraintStart_toEndOf="@+id/imageViewMail"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/mail_icon_text" />
+
+            <ImageView
+                android:id="@+id/imageViewMail"
+                android:layout_width="64dp"
+                android:layout_height="49dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="76dp"
+                android:layout_marginLeft="76dp"
+                android:layout_marginTop="8dp"
+                android:adjustViewBounds="false"
+                android:contentDescription="@string/mail_icon_text"
+                android:src="@drawable/mensaje_suggest_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/buttonMail"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.666" />
+
+            <Button
+                android:id="@+id/buttonMail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/facebookContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/more_button"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/mailContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/twitterContainer">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/editTextFacebook"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:ems="10"
+                android:text="@string/facebook_icon_text"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/buttonFacebook"
+                app:layout_constraintHorizontal_bias="0.11"
+                app:layout_constraintStart_toEndOf="@+id/imageViewFacebook"
+                app:layout_constraintTop_toTopOf="@+id/buttonFacebook"
+                tools:text="@string/facebook_icon_text" />
+
+            <ImageView
+                android:id="@+id/imageViewFacebook"
+                android:layout_width="64dp"
+                android:layout_height="49dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="76dp"
+                android:layout_marginLeft="76dp"
+                android:layout_marginTop="8dp"
+                android:adjustViewBounds="false"
+                android:contentDescription="@string/facebook_icon_text"
+                android:src="@drawable/facebook_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/buttonFacebook"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.461" />
+
+            <Button
+                android:id="@+id/buttonFacebook"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/twitterContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/more_button"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/facebookContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewIconMore">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/editTextTwitter"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:ems="10"
+                android:text="@string/twitter_icon_text"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/buttonTwitter"
+                app:layout_constraintHorizontal_bias="0.099"
+                app:layout_constraintStart_toEndOf="@+id/imageViewTwitter"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/twitter_icon_text" />
+
+            <ImageView
+                android:id="@+id/imageViewTwitter"
+                android:layout_width="64dp"
+                android:layout_height="49dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="76dp"
+                android:layout_marginLeft="76dp"
+                android:layout_marginTop="8dp"
+                android:adjustViewBounds="false"
+                android:contentDescription="@string/twitter_icon_text"
+                android:src="@drawable/twitter_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/buttonTwitter"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.461" />
+
+            <Button
+                android:id="@+id/buttonTwitter"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
