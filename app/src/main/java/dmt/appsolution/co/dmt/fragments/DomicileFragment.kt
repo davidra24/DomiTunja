@@ -114,11 +114,4 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
         mapViewDomicile.onLowMemory()
         super.onLowMemory()
     }
-
-    override fun onSaveInstanceState(outState: Bundle?) {
-        mapViewDomicile.onSaveInstanceState(outState)
-        super.onSaveInstanceState(outState)
-    }
-
-
 }

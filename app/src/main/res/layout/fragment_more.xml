@@ -10,22 +10,26 @@
     <ImageView
         android:id="@+id/imageViewBackgroundMore"
         android:layout_width="0dp"
-        android:layout_height="362dp"
+        android:layout_height="481dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/background_splash"
         android:contentDescription="@string/img_splashscreen"
         android:src="@drawable/background_splash"
         app:layout_constraintBottom_toTopOf="@+id/twitterContainer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewIconMore"
         android:layout_width="0dp"
-        android:layout_height="355dp"
+        android:layout_height="349dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/img_splashscreen"
         android:src="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewBackgroundMore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,9 +43,8 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facebookContainer">
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -53,9 +56,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginLeft="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:ems="10"
                 android:text="@string/mail_icon_text"
@@ -73,8 +76,8 @@
                 android:layout_width="64dp"
                 android:layout_height="49dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginStart="76dp"
                 android:layout_marginLeft="76dp"
+                android:layout_marginStart="76dp"
                 android:layout_marginTop="8dp"
                 android:adjustViewBounds="false"
                 android:contentDescription="@string/mail_icon_text"
@@ -93,8 +96,10 @@
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
@@ -108,8 +113,7 @@
         app:layout_constraintBottom_toTopOf="@+id/mailContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/twitterContainer">
+        app:layout_constraintStart_toStartOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -121,9 +125,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginLeft="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:ems="10"
                 android:text="@string/facebook_icon_text"
@@ -141,8 +145,8 @@
                 android:layout_width="64dp"
                 android:layout_height="49dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginStart="76dp"
                 android:layout_marginLeft="76dp"
+                android:layout_marginStart="76dp"
                 android:layout_marginTop="8dp"
                 android:adjustViewBounds="false"
                 android:contentDescription="@string/facebook_icon_text"
@@ -177,8 +181,7 @@
         app:layout_constraintBottom_toTopOf="@+id/facebookContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewIconMore">
+        app:layout_constraintStart_toStartOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -190,9 +193,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginLeft="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:ems="10"
                 android:text="@string/twitter_icon_text"
@@ -210,8 +213,8 @@
                 android:layout_width="64dp"
                 android:layout_height="49dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginStart="76dp"
                 android:layout_marginLeft="76dp"
+                android:layout_marginStart="76dp"
                 android:layout_marginTop="8dp"
                 android:adjustViewBounds="false"
                 android:contentDescription="@string/twitter_icon_text"
