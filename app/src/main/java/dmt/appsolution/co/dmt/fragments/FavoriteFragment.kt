@@ -39,11 +39,8 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
 
     private fun fillListFavorite(){
         Constants.restaurantList.filter { it.isFavorite }.forEach { Constants.favoriteRestaurantList.add(it) }
-        if (itemAdapter == null) {
-            itemAdapter = ItemAdapter(this.activity, Constants.favoriteRestaurantList)
-            listViewFavorite.adapter = itemAdapter
-        }else
-            itemAdapter!!.notifyDataSetChanged()
+        itemAdapter = ItemAdapter(this.activity, Constants.favoriteRestaurantList)
+        listViewFavorite.adapter = itemAdapter
     }
 
 

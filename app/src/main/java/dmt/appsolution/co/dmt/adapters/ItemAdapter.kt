@@ -3,6 +3,7 @@ package dmt.appsolution.co.dmt.adapters
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,7 +47,11 @@ class ItemAdapter(var context:Context, private var  items:List<ItemRestaurant>) 
         descriptionDomicile.text = item.summary
         ratingBar.rating = item.rating.toFloat()
         btnViewDomicile.setOnClickListener{
-            context.startActivity(Intent(context, RestaurantActivity::class.java))
+            var bundle = Bundle()
+            bundle.putSerializable("Item", item)
+            var intent = Intent(context, RestaurantActivity::class.java)
+            intent.putExtras(bundle)
+            context.startActivity(intent)
         }
         return rowView
     }

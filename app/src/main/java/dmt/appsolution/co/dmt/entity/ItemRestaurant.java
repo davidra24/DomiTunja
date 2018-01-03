@@ -1,8 +1,9 @@
 package dmt.appsolution.co.dmt.entity;
 
-import android.graphics.Point;
 
-public class ItemRestaurant {
+import java.io.Serializable;
+
+public class ItemRestaurant implements Serializable{
     private int image;
     private String name;
     private String summary;

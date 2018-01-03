@@ -7,7 +7,6 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
@@ -17,27 +16,25 @@ import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.dialog.DialogFilter
 import dmt.appsolution.co.dmt.entity.Constants
 import kotlinx.android.synthetic.main.fragment_domicile.*
+import kotlinx.android.synthetic.main.fragment_domicile.view.*
 
 class DomicileFragment : Fragment(), OnMapReadyCallback{
     private var itemAdapter: ItemAdapter? = null
+    private var viewAux: View? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_domicile, container, false)
-
-    }
-    @SuppressLint("MissingPermission")
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+        viewAux = inflater!!.inflate(R.layout.fragment_domicile, container, false)
         startMap(savedInstanceState)
         filterFood()
-        buttonFilterDomicile.setOnClickListener{DialogFilter().show(fragmentManager,tag)}
+        viewAux!!.buttonFilterDomicile.setOnClickListener{DialogFilter().show(fragmentManager,tag)}
+        return viewAux
+
     }
 
-
     private fun startMap(savedInstanceState: Bundle?){
-        mapViewDomicile.onCreate(savedInstanceState)
-        mapViewDomicile.getMapAsync(this)
+        viewAux!!.mapViewDomicile.onCreate(savedInstanceState)
+        viewAux!!.mapViewDomicile.getMapAsync(this)
     }
 
     fun filterFood(){
@@ -50,7 +47,6 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
         }
         validateAdapter()
         setButtonImgFilter()
-        mapViewDomicile.getMapAsync(this)
     }
 
     private fun fillFilterList() {
@@ -59,30 +55,47 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
     }
 
     private fun validateAdapter() {
-        if (itemAdapter == null) {
-            itemAdapter = ItemAdapter(activity, Constants.filterRestaurantList)
-            listViewDomicile.adapter = itemAdapter
-        }else {
-            itemAdapter!!.notifyDataSetChanged()
-        }
+        itemAdapter = ItemAdapter(activity, Constants.filterRestaurantList)
+        viewAux!!.listViewDomicile.adapter = itemAdapter
     }
 
     private fun setButtonImgFilter() {
         when(Constants.FOOD_FILTER){
-            Constants.CHICKEN_FOOD -> buttonFilterDomicile.background = ContextCompat.getDrawable(context, R.drawable.icon12)
-            Constants.MEAT_FOOD -> buttonFilterDomicile.background = ContextCompat.getDrawable(context,R.drawable.icon16)
-            Constants.FISH_FOOD -> buttonFilterDomicile.background = ContextCompat.getDrawable(context,R.drawable.icon14)
+            Constants.ALL_FOOD -> {
+                viewAux!!.buttonFilterDomicile
+                        .background = ContextCompat.getDrawable(context, R.drawable.icon4)
+                viewAux!!.textViewTypeFood.text = Constants.ALL_FOOD
+            }
+            Constants.CHICKEN_FOOD -> {
+                viewAux!!.buttonFilterDomicile
+                        .background = ContextCompat.getDrawable(context, R.drawable.icon12)
+                viewAux!!.textViewTypeFood.text = Constants.CHICKEN_FOOD
+            }
+            Constants.MEAT_FOOD -> {
+                viewAux!!.buttonFilterDomicile.background =
+                        ContextCompat.getDrawable(context,R.drawable.icon16)
+                viewAux!!.textViewTypeFood.text = Constants.MEAT_FOOD
+            }
+            Constants.FISH_FOOD -> {
+                viewAux!!.buttonFilterDomicile.background =
+                        ContextCompat.getDrawable(context,R.drawable.icon14)
+                viewAux!!.textViewTypeFood.text = Constants.FISH_FOOD
+            }
         }
 
     }
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
-        map!!.clear()
-        map.uiSettings.setAllGesturesEnabled(true)
+        map!!.uiSettings.setAllGesturesEnabled(true)
         map.isMyLocationEnabled = true
+        addMarkers(map)
+    }
+
+
+    private fun addMarkers(map: GoogleMap?){
         for(restaurant in Constants.filterRestaurantList)
-            map.addMarker(MarkerOptions().
+            map!!.addMarker(MarkerOptions().
                     position(LatLng(restaurant.locationX, restaurant.locationY))
                     .title(restaurant.name))
     }
@@ -98,8 +111,14 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
     }
 
     override fun onLowMemory() {
-        super.onLowMemory()
         mapViewDomicile.onLowMemory()
+        super.onLowMemory()
     }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        mapViewDomicile.onSaveInstanceState(outState)
+        super.onSaveInstanceState(outState)
+    }
+
 
 }

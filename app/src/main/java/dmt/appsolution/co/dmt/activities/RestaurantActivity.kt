@@ -9,24 +9,47 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback
 import com.google.android.gms.maps.StreetViewPanorama
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import dmt.appsolution.co.dmt.R
+import dmt.appsolution.co.dmt.entity.ItemRestaurant
 import kotlinx.android.synthetic.main.activity_restaurant.*
 
 class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetViewPanoramaReadyCallback {
-
+    private var itemRestaurant: ItemRestaurant? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant)
+        startMaps(savedInstanceState)
+        startCarousel()
+        itemRestaurant = intent.extras.getSerializable("Item") as ItemRestaurant
+        startComponents()
+    }
+
+
+    private fun startMaps(savedInstanceState: Bundle?) {
         mapStreeRestaurant.onCreate(savedInstanceState)
         mapStreeRestaurant.getStreetViewPanoramaAsync(this)
         mapRestaurant.onCreate(savedInstanceState)
         mapRestaurant.getMapAsync(this)
-        var arr:MutableList<Int> ?= mutableListOf()
-        arr!!.add(R.drawable.tinga_pollo)
-        arr.add(R.drawable.tinga_pollo)
-        arr.add(R.drawable.tinga_pollo)
-        fillCarousel(arr)
+    }
+
+    private fun startCarousel() {
+        var listImg:MutableList<Int> ?= mutableListOf()
+        listImg!!.add(R.drawable.tinga_pollo)
+        listImg.add(R.drawable.tinga_pollo)
+        listImg.add(R.drawable.tinga_pollo)
+        fillCarousel(listImg)
+    }
+
+    private fun startComponents() {
+        txtCategoryName.text = itemRestaurant!!.typeFood
+        txtRestaurantName.text = itemRestaurant!!.name
+        ratingBarRestauant.rating = itemRestaurant!!.rating.toFloat()
+        buttonDescriptionInformation.text = itemRestaurant!!.summary
+        buttonNumber.text = itemRestaurant!!.number.toString()
+        buttonWebSiteInformation.text = itemRestaurant!!.webSite
+        buttonContactInformation.text = itemRestaurant!!.mail
     }
 
     private fun fillCarousel(img:MutableList<Int>){
@@ -41,12 +64,15 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
 
     override fun onStreetViewPanoramaReady(map: StreetViewPanorama?) {
         map!!.isStreetNamesEnabled = true
-        map.setPosition(LatLng(37.765927, -122.449972))
+        map.setPosition(LatLng(itemRestaurant!!.locationX, itemRestaurant!!.locationY))
     }
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
         map!!.isMyLocationEnabled = true
+        map.addMarker(MarkerOptions().
+                position(LatLng(itemRestaurant!!.locationX, itemRestaurant!!.locationY)).
+                title(itemRestaurant!!.name))
     }
 
     override fun onResume() {

@@ -49,6 +49,7 @@ class MenuActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, TabHos
     }
 
     override fun onTabChanged(p0: String?) {
+        viewPagerMenu.currentItem = tabHost.currentTab
     }
 
     override fun onPageScrollStateChanged(state: Int) {
@@ -58,8 +59,8 @@ class MenuActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, TabHos
     }
 
     override fun onPageSelected(position: Int) {
-        tabHost.currentTab = position
         horizontalScrollViewMenu.smoothScrollTo(tabHost.width * (position / (3 - 1)), 0)
+        tabHost.currentTab = position
     }
 
     inner class FakeContent(context: Context) : TabHost.TabContentFactory {
