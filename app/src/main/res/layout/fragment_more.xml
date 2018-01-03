@@ -24,8 +24,9 @@
     <ImageView
         android:id="@+id/imageViewIconMore"
         android:layout_width="0dp"
-        android:layout_height="349dp"
+        android:layout_height="314dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/img_splashscreen"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@+id/twitterContainer"
