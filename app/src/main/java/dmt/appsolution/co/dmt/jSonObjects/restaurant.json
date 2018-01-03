@@ -1,0 +1,63 @@
+[
+    {
+    "id" : 1,
+    "nombre" : "El gran pollo",
+    "tipo" : "Pollo",
+    "imagenSlide" : { "img0":"http://images-gmi-pmc.edge-generalmills.com/6c9c3378-79e4-4d1f-bbce-828b9a6f39bf.jpg",
+                      "img1":"https://i.ytimg.com/vi/xJxCE7UhS5w/maxresdefault.jpg",
+                      "img2":"http://www.telemundo.com/sites/nbcutelemundo/files/images/promo/video_clip/2015/11/16/pollo-frito-comida-chatarra.jpg"},
+     "telefono":"+57123456789",
+     "direccion" :"pato feliz avenida siempre viva",
+     "webSite":"facebok.com/superpollos",
+     "calificacion":4
+    },
+    {
+      "id" : 2,
+      "nombre" : "American pizza",
+      "tipo" : "Pizza",
+       "imagenSlide" : { "img0":"http://cdn2.cocinadelirante.com/sites/default/files/images/2017/01/pizzapepperonni.jpg",
+                      "img1":"https://img.grouponcdn.com/deal/8DDtq5XRzVnLXEUnPHPd/p2-2048x1229/v1/c700x420.jpg",
+                      "img2":"https://storage.googleapis.com/mmc-cdn-bucket/uploads/2017/07/12dc1a9d-pizza.jpg",
+                      "img3":"https://www.just-eat.ie/takeaways/assets/themes/base/images/en_ie/cuisines/home/large_pizza.gif"},
+      "telefono":"+57123456789",
+      "direccion" :"calle 1 # 99 - 78",
+      "webSite":"americanpizza.com",
+      "calificacion":3
+    },
+    {
+      "id" : 3,
+      "nombre" : "Algo de comidas rápidas",
+      "tipo" : "Comidas rápdias",
+      "imagenSlide" : { "img0":"https://media.betazeta.com/sabrosia/2015/10/comida_rapida_starterdaily.jpg",
+                        "img1":"https://www.viajejet.com/wp-content/viajes/el-consumo-de-comida-rapida-en-estados-unidos.jpg",
+                        "img2":"https://marketeandoideas.files.wordpress.com/2015/07/comidarapida.jpg"},
+      "telefono":"+57123456789",
+      "direccion" :"calle falsa 123",
+      "webSite":"comidas rapidas",
+      "calificacion":5
+    },
+    {
+      "id" : 4,
+      "nombre" : "Mr dogs. Perros y perras",
+      "tipo" : "Perros calientes",
+      "imagenSlide" : { "img0":"http://www.eltiempo.com/contenido///entretenimiento/gastronomia/IMAGEN/IMAGEN-16517506-2.jpg",
+                        "img1":"http://farm8.staticflickr.com/7284/8736746203_f36516b9a7_c.jpg",
+                        "img2":"http://revista.pricetravel.com.mx/slir/w700/wp-content/uploads/xpecaste/2016/06/jpg/kdjfgr.jpg"},
+      "telefono":"+57123456789",
+      "direccion" :"cra 2 #15 - 79 las nieves",
+      "webSite":"mrdogs.com.co",
+      "calificacion":5
+    },
+    {
+      "id" : 5,
+      "nombre" : "La muralla china",
+      "tipo" : "Comida china",
+      "imagenSlide" : { "img0":"https://www.comedera.com/wp-content/uploads/2014/01/arroz-chino.jpg",
+                        "img1":"http://img.taste.com.au/Selhj7fP/taste/2016/11/mum-style-chop-suey-100492-1.jpeg",
+                        "img2":"https://halfoff.adspayusa.com/wp-content/uploads/2017/04/sushi_and_sashimi_for_two.0.jpg"},
+      "telefono":"+57123456789",
+      "direccion" :"calle 4 # 20-21",
+      "webSite":"chingchangchungcheng.co",
+      "calificacion":4
+    }
+  ]
