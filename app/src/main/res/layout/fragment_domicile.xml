@@ -24,8 +24,8 @@
     <ListView
         android:id="@+id/listViewDomicile"
         android:layout_width="0dp"
-        android:layout_height="@dimen/list_view_height_domicile"
-        android:layout_marginBottom="8dp"
+        android:layout_height="286dp"
+        android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
