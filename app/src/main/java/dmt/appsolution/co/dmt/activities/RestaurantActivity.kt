@@ -1,6 +1,5 @@
 package dmt.appsolution.co.dmt.activities
 
-import `in`.goodiebag.carouselpicker.CarouselPicker
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -18,6 +17,8 @@ import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback
 import com.google.android.gms.maps.StreetViewPanorama
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.synnapps.carouselview.CarouselView
+import com.synnapps.carouselview.ImageListener
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.entity.ItemRestaurant
 import kotlinx.android.synthetic.main.activity_restaurant.*
@@ -76,7 +77,7 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
     }
 
     private fun startCarousel() {
-        var listImg:MutableList<Int> ?= mutableListOf()
+        val listImg:MutableList<Int> ?= mutableListOf()
         listImg!!.add(R.drawable.tinga_pollo)
         listImg.add(R.drawable.tinga_pollo)
         listImg.add(R.drawable.tinga_pollo)
@@ -94,13 +95,11 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
     }
 
     private fun fillCarousel(img:MutableList<Int>){
-        var carouselPicker:CarouselPicker ?= findViewById(R.id.carouselRestaurant)
-        var itemImageCarousel:MutableList<CarouselPicker.PickerItem> ?= mutableListOf()
-        for (i in 0 until img.size){
-            itemImageCarousel!!.add(CarouselPicker.DrawableItem(img.get(i)))
-        }
-        var imageAdapter:CarouselPicker.CarouselViewAdapter = CarouselPicker.CarouselViewAdapter(this, itemImageCarousel, 0)
-        carouselPicker!!.adapter=imageAdapter
+        val imageListener = ImageListener { position, imageView -> imageView.setImageResource(img[position]) }
+
+        val carouselView:CarouselView ?= findViewById(R.id.carouselRestaurant)
+        carouselView!!.pageCount = img.size
+        carouselView.setImageListener(imageListener)
     }
 
     override fun onStreetViewPanoramaReady(map: StreetViewPanorama?) {

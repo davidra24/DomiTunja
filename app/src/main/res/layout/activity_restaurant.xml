@@ -48,16 +48,18 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="393dp">
 
-            <in.goodiebag.carouselpicker.CarouselPicker
+            <com.synnapps.carouselview.CarouselView
                 android:id="@+id/carouselRestaurant"
-                android:layout_width="0dp"
-                android:layout_height="250dp"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginBottom="8dp"
-                app:items_visible="three"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayoutIcons"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:radius="6dp"
+                app:slideInterval="3000"
+                app:fillColor="#FFFFFFFF"
+                app:pageColor="#00000000"
+                app:strokeColor="#FF777777"
+                app:strokeWidth="1dp"/>
 
             <TextView
                 android:id="@+id/txtCategoryName"
