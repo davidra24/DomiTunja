@@ -2,6 +2,7 @@ package dmt.appsolution.co.dmt.fragments
 
 
 import android.annotation.SuppressLint
+import android.graphics.Point
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -10,14 +11,17 @@ import android.view.ViewGroup
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import dmt.appsolution.co.dmt.R
-import dmt.appsolution.co.dmt.adapters.ItemAdapterDomicile
-import dmt.appsolution.co.dmt.itemList.ItemDomicile
+import dmt.appsolution.co.dmt.adapters.ItemAdapter
+import dmt.appsolution.co.dmt.entity.Constants
+import dmt.appsolution.co.dmt.entity.ItemRestaurant
+import kotlinx.android.synthetic.main.fragment_domicile.*
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class FavoriteFragment : Fragment(), OnMapReadyCallback {
+    private var itemAdapter: ItemAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
 
@@ -34,26 +38,17 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun fillListFavorite(){
-        val items: MutableList<ItemDomicile> = mutableListOf()
-        items.add(ItemDomicile(R.drawable.photo_apartament, "Restaurante",
-                "Cra 12 #34-55", 5, R.drawable.item_arrow))
-        items.add(ItemDomicile(R.drawable.photo_apartament, "Restaurante",
-                "Cra 12 #34-55", 3, R.drawable.item_arrow))
-        items.add(ItemDomicile(R.drawable.photo_apartament, "Restaurante",
-                "Cra 12 #34-55", 4, R.drawable.item_arrow))
-        listViewFavorite.adapter = ItemAdapterDomicile(this.context, items)
+        Constants.restaurantList.filter { it.isFavorite }.forEach { Constants.favoriteRestaurantList.add(it) }
+        itemAdapter = ItemAdapter(this.activity, Constants.favoriteRestaurantList)
+        listViewFavorite.adapter = itemAdapter
     }
 
 
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
-        //map!!.mapType = GoogleMap.MAP_TYPE_HYBRID
-        map!!.isMyLocationEnabled = true
-        //map.isTrafficEnabled = true
-        //map.isIndoorEnabled = true
-        //map.isBuildingsEnabled = true
-        map.uiSettings.isZoomControlsEnabled = true
+        map!!.uiSettings.setAllGesturesEnabled(true)
+        map.isMyLocationEnabled = true
     }
 
 

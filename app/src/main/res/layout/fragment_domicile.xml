@@ -13,31 +13,44 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/map_height"
         android:layout_marginBottom="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="2dp"
         app:layout_constraintBottom_toTopOf="@+id/listViewDomicile"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/listViewDomicile"
         android:layout_width="0dp"
-        android:layout_height="@dimen/list_view_height_domicile"
+        android:layout_height="286dp"
         android:layout_marginBottom="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:dividerHeight="@dimen/divider_list_height"
         android:footerDividersEnabled="true"
         android:headerDividersEnabled="true"
-        app:layout_constraintBottom_toBottomOf="@+id/imgButtonBar"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTypeFood"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapViewDomicile">
 
     </ListView>
+
+    <Button
+        android:id="@+id/buttonFilterDomicile"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/icon4"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTypeFood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imgButtonBar"
@@ -50,21 +63,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewTypeFood"
-        app:layout_constraintVertical_bias="0.806" />
-
-    <ImageView
-        android:id="@+id/imgIconFood"
-        android:layout_width="69dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:contentDescription="@string/icon_bar_desc"
-        android:src="@drawable/icon10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imgButtonBar"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="@+id/imgButtonBar" />
+        app:layout_constraintVertical_bias="0.627" />
 
     <TextView
         android:id="@+id/textViewTypeFood"
@@ -74,7 +73,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:contentDescription="@string/type_food"
-        android:text="TextView"
+        android:text="@android:string/untitled"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

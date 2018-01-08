@@ -7,37 +7,37 @@
     tools:context="dmt.appsolution.co.dmt.activities.MenuActivity">
 
     <ImageView
-        android:id="@+id/imageViewBarDMT"
-        android:layout_width="wrap_content"
-        android:layout_height="56dp"
+        android:id="@+id/imageViewBarDMTMenu"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bar_height"
+        android:background="@drawable/top_bar_background"
         android:contentDescription="@string/bar_menu_desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/top_bar_background" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageViewDMTIcon"
-        android:layout_width="297dp"
-        android:layout_height="45dp"
+        android:id="@+id/imageViewIconDMTMenu"
+        android:layout_width="@dimen/icon_bar_width"
+        android:layout_height="@dimen/icon_bar_height"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/image_bar_desc"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewBarDMT"
-        app:layout_constraintStart_toStartOf="@+id/imageViewBarDMT"
-        app:layout_constraintTop_toTopOf="@+id/imageViewBarDMT"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewBarDMTMenu"
+        app:layout_constraintStart_toStartOf="@+id/imageViewBarDMTMenu"
+        app:layout_constraintTop_toTopOf="@+id/imageViewBarDMTMenu"
         app:srcCompat="@drawable/top_bar_image" />
 
     <TabHost
         android:id="@+id/tabHost"
-        android:layout_width="384dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewDMTIcon">
+        app:layout_constraintTop_toBottomOf="@+id/imageViewIconDMTMenu">
 
         <LinearLayout
             android:layout_width="match_parent"

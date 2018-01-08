@@ -12,6 +12,8 @@
         android:layout_width="145dp"
         android:layout_height="117dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:contentDescription="@string/img_item_desc"
@@ -51,11 +53,9 @@
 
     <ImageButton
         android:id="@+id/btnViewDomicile"
-        android:layout_width="26dp"
-        android:layout_height="50dp"
+        android:layout_width="41dp"
+        android:layout_height="63dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginEnd="4dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:background="@color/colorAccent"
@@ -67,11 +67,13 @@
 
     <RatingBar
         android:id="@+id/ratingBarDomicile"
-        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        style="@style/OrangeRatingBar"
+        android:isIndicator="true"
         android:layout_width="wrap_content"
-        android:layout_height="37dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
+        android:numStars="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.145"
