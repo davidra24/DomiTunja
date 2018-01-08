@@ -2,26 +2,29 @@ package dmt.appsolution.co.dmt.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import dmt.appsolution.co.dmt.R
-import dmt.appsolution.co.dmt.itemList.ItemDomicile
+import dmt.appsolution.co.dmt.activities.RestaurantActivity
+import dmt.appsolution.co.dmt.entity.ItemRestaurant
 
-class ItemAdapterDomicile(var context:Context, private var  items:List<ItemDomicile>) : BaseAdapter(){
-    var itemsDomicile: List<ItemDomicile>? = null
+class ItemAdapter(var context:Context, private var  items:List<ItemRestaurant>) : BaseAdapter(){
+    var itemsRestaurant: List<ItemRestaurant>? = null
 
     init {
-        this.itemsDomicile = items
+        this.itemsRestaurant = items
     }
 
     override fun getCount(): Int {
-        return this.itemsDomicile!!.size
+        return this.itemsRestaurant!!.size
     }
 
     override fun getItem(position: Int): Any {
-        return this.itemsDomicile!![position]
+        return this.itemsRestaurant!![position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -30,7 +33,7 @@ class ItemAdapterDomicile(var context:Context, private var  items:List<ItemDomic
 
     @SuppressLint("InflateParams", "ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-        var rowView = convertView as? View
+        var rowView: View? = convertView
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         rowView = layoutInflater.inflate(R.layout.activity_domicile_item, null)
         val imageDomicile = rowView.findViewById<ImageView>(R.id.imageDomicile)
@@ -38,12 +41,18 @@ class ItemAdapterDomicile(var context:Context, private var  items:List<ItemDomic
         val descriptionDomicile = rowView.findViewById<TextView>(R.id.txtDescripDomicile)
         val ratingBar = rowView.findViewById<RatingBar>(R.id.ratingBarDomicile)
         val btnViewDomicile = rowView.findViewById<ImageButton>(R.id.btnViewDomicile)
-        val item = this.itemsDomicile!![position]
-        imageDomicile.setImageResource(item.imagen)
-        titleDomicile.text = item.titulo
-        descriptionDomicile.text = item.descripcion
+        val item = this.itemsRestaurant!![position]
+        imageDomicile.setImageResource(item.image)
+        titleDomicile.text = item.name
+        descriptionDomicile.text = item.summary
         ratingBar.rating = item.rating.toFloat()
-        btnViewDomicile.setImageResource(item.masInfo)
+        btnViewDomicile.setOnClickListener{
+            var bundle = Bundle()
+            bundle.putSerializable("Item", item)
+            var intent = Intent(context, RestaurantActivity::class.java)
+            intent.putExtras(bundle)
+            context.startActivity(intent)
+        }
         return rowView
     }
 
