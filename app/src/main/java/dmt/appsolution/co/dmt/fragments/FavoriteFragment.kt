@@ -2,7 +2,6 @@ package dmt.appsolution.co.dmt.fragments
 
 
 import android.annotation.SuppressLint
-import android.graphics.Point
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -12,9 +11,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.adapters.ItemAdapter
-import dmt.appsolution.co.dmt.entity.Constants
-import dmt.appsolution.co.dmt.entity.ItemRestaurant
-import kotlinx.android.synthetic.main.fragment_domicile.*
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 /**
@@ -38,9 +34,9 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun fillListFavorite(){
-        Constants.restaurantList.filter { it.isFavorite }.forEach { Constants.favoriteRestaurantList.add(it) }
+        /*Constants.restaurantList.filter { it.isFavorite }.forEach { Constants.favoriteRestaurantList.add(it) }
         itemAdapter = ItemAdapter(this.activity, Constants.favoriteRestaurantList)
-        listViewFavorite.adapter = itemAdapter
+        listViewFavorite.adapter = itemAdapter*/
     }
 
 

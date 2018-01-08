@@ -40,10 +40,10 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
 
     fun filterFood(){
         Constants.filterRestaurantList.clear()
-        if (Constants.FOOD_FILTER == "Todo")
+        if (Constants.FOOD_FILTER == Constants.ALL_FOOD)
                 fillFilterList()
         else {
-            Constants.restaurantList.filter { it.typeFood == Constants.FOOD_FILTER }
+            Constants.restaurantList.filter { it.idtipo_lugar == Constants.FOOD_FILTER }
                     .forEach { Constants.filterRestaurantList.add(it) }
         }
         validateAdapter()
@@ -69,22 +69,22 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
             Constants.ALL_FOOD -> {
                 viewAux!!.buttonFilterDomicile
                         .background = ContextCompat.getDrawable(context, R.drawable.icon4)
-                viewAux!!.textViewTypeFood.text = Constants.ALL_FOOD
+                viewAux!!.textViewTypeFood.text = "TODO"
             }
             Constants.CHICKEN_FOOD -> {
                 viewAux!!.buttonFilterDomicile
                         .background = ContextCompat.getDrawable(context, R.drawable.icon12)
-                viewAux!!.textViewTypeFood.text = Constants.CHICKEN_FOOD
+                viewAux!!.textViewTypeFood.text = "POLLO"
             }
             Constants.MEAT_FOOD -> {
                 viewAux!!.buttonFilterDomicile.background =
                         ContextCompat.getDrawable(context,R.drawable.icon16)
-                viewAux!!.textViewTypeFood.text = Constants.MEAT_FOOD
+                viewAux!!.textViewTypeFood.text = "CARNE"
             }
             Constants.FISH_FOOD -> {
                 viewAux!!.buttonFilterDomicile.background =
                         ContextCompat.getDrawable(context,R.drawable.icon14)
-                viewAux!!.textViewTypeFood.text = Constants.FISH_FOOD
+                viewAux!!.textViewTypeFood.text = "PESCADO"
             }
         }
 
@@ -103,7 +103,7 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
         for(restaurant in Constants.filterRestaurantList)
             map!!.addMarker(MarkerOptions().
                     position(LatLng(restaurant.locationX, restaurant.locationY))
-                    .title(restaurant.name))
+                    .title(restaurant.nombre))
     }
 
     override fun onResume() {

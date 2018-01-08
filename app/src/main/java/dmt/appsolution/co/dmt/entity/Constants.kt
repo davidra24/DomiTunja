@@ -5,15 +5,16 @@ package dmt.appsolution.co.dmt.entity
  */
 class Constants {
     companion object {
-        var FOOD_FILTER = "Todo"
-        val ALL_FOOD: String = "Todo"
-        val CHICKEN_FOOD: String = "Pollo"
-        val MEAT_FOOD: String = "Carne"
-        val FISH_FOOD: String = "Pescado"
+        var FOOD_FILTER = 0
+        val ALL_FOOD: Int = 0
+        val CHICKEN_FOOD: Int = 1
+        val MEAT_FOOD: Int = 2
+        val FISH_FOOD: Int = 3
         val DEFAULT_PHONE_NUMBER: String = "3191231234"
-        var restaurantList: MutableList<ItemRestaurant> = mutableListOf()
-        var filterRestaurantList: MutableList<ItemRestaurant> = mutableListOf()
-        var recommendedRestaurantList: MutableList<ItemRestaurant> = mutableListOf()
-        var favoriteRestaurantList: MutableList<ItemRestaurant> = mutableListOf()
+        var restaurantList: MutableList<Lugar> = mutableListOf()
+        var filterRestaurantList: MutableList<Lugar> = mutableListOf()
+        var recommendedRestaurantList: MutableList<Lugar> = mutableListOf()
+        var favoriteRestaurantList: MutableList<Lugar> = mutableListOf()
+        var restaurantType: MutableList<TipoLugar> = mutableListOf()
     }
 }
