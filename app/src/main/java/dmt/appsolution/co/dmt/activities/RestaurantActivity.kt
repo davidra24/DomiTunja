@@ -1,3 +1,5 @@
+@file:Suppress("CAST_NEVER_SUCCEEDS")
+
 package dmt.appsolution.co.dmt.activities
 
 import android.Manifest
@@ -9,7 +11,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.view.View
 import android.widget.Toast
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -38,7 +39,7 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when (requestCode) {
-            1 -> if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            1 -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 makeACall()
             }
         }
@@ -48,11 +49,11 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
         //aca se hace la llamada
         try {
         val phoneNumber = itemRestaurant!!.number
-            if (phoneNumber.length > 0){
+            if (phoneNumber!!.isNotEmpty()){
                 val url = "tel:$phoneNumber"
-                buttonCallInformation.setOnClickListener(View.OnClickListener {
+                buttonCallInformation.setOnClickListener({
                     val callIntent = Intent(Intent.ACTION_CALL)
-                    callIntent.setData(Uri.parse(url))
+                    callIntent.data = Uri.parse(url)
                     if (ContextCompat.checkSelfPermission(this.baseContext, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
                         ActivityCompat.requestPermissions(this,  arrayOf(Manifest.permission.CALL_PHONE), 1)
                     }else
