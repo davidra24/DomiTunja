@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_domicile.view.*
 class DomicileFragment : Fragment(), OnMapReadyCallback{
     private var itemAdapter: ItemAdapter? = null
     private var viewAux: View? = null
+    private var map: GoogleMap? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -47,6 +48,10 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
         }
         validateAdapter()
         setButtonImgFilter()
+        if(map != null) {
+            map!!.clear()
+            addMarkers(map)
+        }
     }
 
     private fun fillFilterList() {
@@ -89,6 +94,7 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
     override fun onMapReady(map: GoogleMap?) {
         map!!.uiSettings.setAllGesturesEnabled(true)
         map.isMyLocationEnabled = true
+        this.map = map
         addMarkers(map)
     }
 
