@@ -56,12 +56,12 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         mapViewFavorite.onDestroy()
+        super.onDestroy()
     }
 
     override fun onLowMemory() {
-        super.onLowMemory()
         mapViewFavorite.onLowMemory()
+        super.onLowMemory()
     }
 }
