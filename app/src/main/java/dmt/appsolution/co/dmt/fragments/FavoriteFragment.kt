@@ -11,6 +11,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.adapters.ItemAdapter
+import dmt.appsolution.co.dmt.persistence.DataBaseHandler
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 /**
@@ -34,9 +35,9 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun fillListFavorite(){
-        /*Constants.restaurantList.filter { it.isFavorite }.forEach { Constants.favoriteRestaurantList.add(it) }
-        itemAdapter = ItemAdapter(this.activity, Constants.favoriteRestaurantList)
-        listViewFavorite.adapter = itemAdapter*/
+        var db = DataBaseHandler(this.context)
+        itemAdapter = ItemAdapter(this.activity, db.readDataLugar())
+        listViewFavorite.adapter = itemAdapter
     }
 
 
@@ -50,6 +51,7 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
 
     override fun onResume() {
         mapViewFavorite.onResume()
+        fillListFavorite()
         super.onResume()
     }
 

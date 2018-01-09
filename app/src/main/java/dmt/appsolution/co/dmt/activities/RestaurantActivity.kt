@@ -21,6 +21,7 @@ import com.synnapps.carouselview.ImageListener
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.entity.Constants
 import dmt.appsolution.co.dmt.entity.Lugar
+import dmt.appsolution.co.dmt.persistence.DataBaseHandler
 import kotlinx.android.synthetic.main.activity_restaurant.*
 
 class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetViewPanoramaReadyCallback {
@@ -66,9 +67,6 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
         }
     }
 
-
-
-
     private fun startMaps(savedInstanceState: Bundle?) {
         mapStreeRestaurant.onCreate(savedInstanceState)
         mapStreeRestaurant.getStreetViewPanoramaAsync(this)
@@ -90,16 +88,33 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
                 txtCategoryName.text = tipoLugar.tipoLugar
         }
         txtRestaurantName.text = lugar!!.nombre
-        ratingBarRestauant.rating = lugar!!.calificacion.toFloat()
+        ratingBarRestaurant.rating = lugar!!.calificacion.toFloat()
         buttonDescriptionInformation.text = lugar!!.descripcion
         buttonNumber.text = lugar!!.telefono
         buttonWebSiteInformation.text = lugar!!.website
         buttonContactInformation.text = lugar!!.email
+        buttonAddFavorite.setOnClickListener {
+            validateInsertion()
+        }
+    }
+
+    private fun validateInsertion() {
+        var db = DataBaseHandler(this.baseContext)
+        var data: MutableList<Lugar> = db.readDataLugar()
+        var isFavorite = false
+        for(i in 0 .. (data.size -1)){
+            if(data[i].id_lugar == lugar!!.id_lugar)
+                isFavorite = true
+        }
+        if (isFavorite)
+            db.deleteLugar(lugar!!.id_lugar)
+        else
+            db.insertLugar(lugar!!)
+        db.close()
     }
 
     private fun fillCarousel(img:MutableList<Int>){
         val imageListener = ImageListener { position, imageView -> imageView.setImageResource(img[position]) }
-
         val carouselView:CarouselView ?= findViewById(R.id.carouselRestaurant)
         carouselView!!.pageCount = img.size
         carouselView.setImageListener(imageListener)

@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageDomicile"
-        android:layout_width="145dp"
-        android:layout_height="117dp"
+        android:layout_width="130dp"
+        android:layout_height="@dimen/imageItemHeight"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
@@ -24,13 +24,13 @@
 
     <TextView
         android:id="@+id/txtTitleDomicile"
-        android:layout_width="163dp"
-        android:layout_height="31dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/name_rest_item"
-        android:text="TextView"
+        android:text="@android:string/untitled"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toEndOf="@+id/imageDomicile"
@@ -38,23 +38,22 @@
 
     <TextView
         android:id="@+id/txtDescripDomicile"
-        android:layout_width="154dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/desc_rest_item"
-        android:text="TextView"
+        android:text="@android:string/untitled"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toEndOf="@+id/imageDomicile"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitleDomicile"
-        tools:contentDescription="Descripcion restaurante item" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleDomicile" />
 
     <ImageButton
         android:id="@+id/btnViewDomicile"
-        android:layout_width="41dp"
-        android:layout_height="63dp"
+        android:layout_width="@dimen/imageButtonWidthItem"
+        android:layout_height="@dimen/imageButtonHeightItem"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
@@ -68,11 +67,11 @@
     <RatingBar
         android:id="@+id/ratingBarDomicile"
         style="@style/OrangeRatingBar"
-        android:isIndicator="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:isIndicator="true"
         android:numStars="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

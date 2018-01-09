@@ -16,5 +16,9 @@ class Constants {
         var recommendedRestaurantList: MutableList<Lugar> = mutableListOf()
         var favoriteRestaurantList: MutableList<Lugar> = mutableListOf()
         var restaurantType: MutableList<TipoLugar> = mutableListOf()
+        val DB_NAME: String? = "DMT_DB"
+        val DB_TABLE_FAV: String? = "LUGARES_FAVORITOS"
+        val DB_VERSION: Int = 1
+
     }
 }
