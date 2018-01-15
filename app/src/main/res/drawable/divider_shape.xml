@@ -3,5 +3,5 @@
     android:shape="rectangle">
 
     <size android:height="1dip"/>
-    <solid android:color="@color/colorBackgroundDialog"/>
+    <solid android:color="@color/colorSeparator"/>
 </shape>
