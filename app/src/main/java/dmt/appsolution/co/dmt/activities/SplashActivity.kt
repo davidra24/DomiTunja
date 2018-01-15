@@ -10,8 +10,7 @@ import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.entity.Constants
-import dmt.appsolution.co.dmt.entity.Lugar
-import dmt.appsolution.co.dmt.entity.TipoLugar
+import dmt.appsolution.co.dmt.services.entity.TipoLugar
 
 class SplashActivity : AppCompatActivity() {
     private val REQUEST_CODE_ASK_PERMISSIONS = 123

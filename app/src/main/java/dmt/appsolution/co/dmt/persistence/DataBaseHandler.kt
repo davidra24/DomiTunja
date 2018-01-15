@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import dmt.appsolution.co.dmt.entity.Constants
-import dmt.appsolution.co.dmt.entity.Lugar
 
 /**
  * Created by Martin on 8/01/2018.

@@ -1,4 +1,4 @@
-package dmt.appsolution.co.dmt.entity
+package dmt.appsolution.co.dmt.services.entity
 
 import java.io.Serializable
 

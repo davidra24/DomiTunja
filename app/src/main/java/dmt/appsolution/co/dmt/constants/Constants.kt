@@ -1,4 +1,6 @@
-package dmt.appsolution.co.dmt.entity
+package dmt.appsolution.co.dmt.constants
+import dmt.appsolution.co.dmt.services.entity.Lugar
+import dmt.appsolution.co.dmt.services.entity.TipoLugar
 
 /**
  * Created by Martin on 27/12/2017.
@@ -19,6 +21,5 @@ class Constants {
         val DB_NAME: String? = "DMT_DB"
         val DB_TABLE_FAV: String? = "LUGARES_FAVORITOS"
         val DB_VERSION: Int = 1
-
     }
 }

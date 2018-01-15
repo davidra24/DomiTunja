@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.*
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.activities.RestaurantActivity
-import dmt.appsolution.co.dmt.entity.Lugar
 
 class ItemAdapter(var context:Context, items:List<Lugar>) : BaseAdapter(){
     private var itemsRestaurant: List<Lugar>? = null

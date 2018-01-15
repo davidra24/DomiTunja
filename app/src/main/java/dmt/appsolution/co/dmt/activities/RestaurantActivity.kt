@@ -1,5 +1,4 @@
 package dmt.appsolution.co.dmt.activities
-
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -19,9 +18,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
 import dmt.appsolution.co.dmt.R
-import dmt.appsolution.co.dmt.entity.Constants
-import dmt.appsolution.co.dmt.entity.Lugar
+import dmt.appsolution.co.dmt.constants.Constants
 import dmt.appsolution.co.dmt.persistence.DataBaseHandler
+import dmt.appsolution.co.dmt.services.entity.Lugar
 import kotlinx.android.synthetic.main.activity_restaurant.*
 
 class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetViewPanoramaReadyCallback {
