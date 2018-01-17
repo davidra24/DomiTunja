@@ -21,4 +21,8 @@
     <string name="title_dialog_filter">Filtrar</string>
     <string name="dialog_filter_accept">Aceptar</string>
     <string name="dialog_filter_cancel">Cancelar</string>
+    <string name="favoriteText">+ Favoritos</string>
+    <string name="shareText">Compartir</string>
+    <string name="websiteText">WebSite</string>
+    <string name="callText">Llamar</string>
 </resources>

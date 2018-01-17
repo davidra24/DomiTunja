@@ -2,7 +2,6 @@ package dmt.appsolution.co.dmt.activities
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Point
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -11,7 +10,7 @@ import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.entity.Constants
-import dmt.appsolution.co.dmt.entity.ItemRestaurant
+import dmt.appsolution.co.dmt.services.entity.TipoLugar
 
 class SplashActivity : AppCompatActivity() {
     private val REQUEST_CODE_ASK_PERMISSIONS = 123
@@ -51,14 +50,21 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun fillTempRestaurants(){
-        Constants.restaurantList.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pollo",
-                "Asadero", 5, "Todo tipo de pollo", false, "www.labrasaroja.com/",
-                Constants.DEFAULT_PHONE_NUMBER, "pollo@gmail.com", Constants.CHICKEN_FOOD, 5.532392303876586, -73.36294144392014))
-        Constants.restaurantList.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Carne",
-                "Carnes", 2, "Todo tipo de Carne", false, "www.labrasaroja.com/",
-                Constants.DEFAULT_PHONE_NUMBER, "pollo@gmail.com", Constants.MEAT_FOOD, 5.532213432951909, -73.36247071623802))
-        Constants.restaurantList.add(ItemRestaurant(R.drawable.photo_apartament, "Restaurante Pez",
-                "Pescado", 5, "Todo tipo de Pez", false, "www.labrasaroja.com/",
-                Constants.DEFAULT_PHONE_NUMBER, "pollo@gmail.com", Constants.FISH_FOOD, 5.5322694969788975, -73.36216159164906))
+        Constants.restaurantList.add(Lugar(1,"pollo@gmail.com", "Restaurante de pollo", "Las Nieves", 3.5,
+                3, "313131313", "300333333", "Calle 24 # 6 -124", "www.labrasaroja.com/",
+                "hola K ase", 1, "persona@gmail.com", 34, "Restaurante Pollo",
+                "Matricula ", 1, 5.532392303876586, -73.36294144392014))
+        Constants.restaurantList.add(Lugar(2,"pollo@gmail.com", "Restaurante de carne", "Las Nieves", 3.5,
+                3, "313131313", "300333333", "Calle 24 # 6 -124", "www.labrasaroja.com/",
+                "hola K ase", 2, "persona@gmail.com", 34, "Restaurante Carne",
+                "Matricula ", 1, 5.532213432951909, -73.36247071623802))
+        Constants.restaurantList.add(Lugar(3,"pollo@gmail.com", "Restaurante de pescado", "Las Nieves", 3.5,
+                3, "313131313", "300333333", "Calle 24 # 6 -124", "www.labrasaroja.com/",
+                "hola K ase", 3, "persona@gmail.com", 34, "Restaurante Pescado",
+                "Matricula ", 1, 5.5322694969788975, -73.36216159164906))
+
+        Constants.restaurantType.add(TipoLugar(1, "Pollo"))
+        Constants.restaurantType.add(TipoLugar(2, "Carne"))
+        Constants.restaurantType.add(TipoLugar(3, "Pescado"))
     }
 }

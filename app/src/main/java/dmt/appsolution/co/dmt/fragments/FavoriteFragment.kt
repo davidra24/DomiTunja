@@ -2,7 +2,6 @@ package dmt.appsolution.co.dmt.fragments
 
 
 import android.annotation.SuppressLint
-import android.graphics.Point
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -10,11 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.adapters.ItemAdapter
 import dmt.appsolution.co.dmt.entity.Constants
-import dmt.appsolution.co.dmt.entity.ItemRestaurant
-import kotlinx.android.synthetic.main.fragment_domicile.*
+import dmt.appsolution.co.dmt.persistence.DataBaseHandler
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 /**
@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_favorite.*
  */
 class FavoriteFragment : Fragment(), OnMapReadyCallback {
     private var itemAdapter: ItemAdapter? = null
+    private var map: GoogleMap? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
 
@@ -38,9 +39,14 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun fillListFavorite(){
-        Constants.restaurantList.filter { it.isFavorite }.forEach { Constants.favoriteRestaurantList.add(it) }
-        itemAdapter = ItemAdapter(this.activity, Constants.favoriteRestaurantList)
+        var db = DataBaseHandler(this.context)
+        itemAdapter = ItemAdapter(this.activity, db.readDataLugar())
         listViewFavorite.adapter = itemAdapter
+        db.close()
+        if(map != null) {
+            map!!.clear()
+            addMarkers(map)
+        }
     }
 
 
@@ -49,21 +55,33 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap?) {
         map!!.uiSettings.setAllGesturesEnabled(true)
         map.isMyLocationEnabled = true
+        this.map = map
+        addMarkers(map)
+    }
+
+    private fun addMarkers(map: GoogleMap?){
+        var db = DataBaseHandler(this.context)
+        for(restaurant in db.readDataLugar())
+            map!!.addMarker(MarkerOptions().
+                    position(LatLng(restaurant.locationX, restaurant.locationY))
+                    .title(restaurant.nombre))
+        db.close()
     }
 
 
     override fun onResume() {
         mapViewFavorite.onResume()
+        fillListFavorite()
         super.onResume()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         mapViewFavorite.onDestroy()
+        super.onDestroy()
     }
 
     override fun onLowMemory() {
-        super.onLowMemory()
         mapViewFavorite.onLowMemory()
+        super.onLowMemory()
     }
 }

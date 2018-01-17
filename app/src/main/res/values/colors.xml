@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#135c7c</color>
     <color name="colorAccent">#fdfdfe</color>
     <color name="colorTitleCategory">#e0a61c</color>
-    <color name="colorBackgroundDialog">#c5cae9</color>
+    <color name="colorStar">#fa6601</color>
+    <color name="colorSeparator">#5895a5</color>
 </resources>

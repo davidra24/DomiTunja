@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.TabHost
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.adapters.FragmentAdapter
-import dmt.appsolution.co.dmt.entity.NoticeDialogListener
+import dmt.appsolution.co.dmt.dialog.NoticeDialogListener
 import dmt.appsolution.co.dmt.fragments.DomicileFragment
 import dmt.appsolution.co.dmt.fragments.FavoriteFragment
 import dmt.appsolution.co.dmt.fragments.RecommendedFragment

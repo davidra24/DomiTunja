@@ -17,6 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/bar_height"
             android:background="@drawable/top_bar_background"
+            android:contentDescription="@string/domicile_bar_desc"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +27,7 @@
             android:id="@+id/imageView6"
             android:layout_width="@dimen/icon_bar_width"
             android:layout_height="@dimen/icon_bar_height"
+            android:contentDescription="@string/icon_bar_desc"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +62,7 @@
 
         <Button
             android:id="@+id/buttonAcceptFilter"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -70,6 +73,7 @@
 
         <Button
             android:id="@+id/buttonCancelFilter"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

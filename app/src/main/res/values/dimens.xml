@@ -14,4 +14,7 @@
     <dimen name="icon_bar_height">45dp</dimen>
     <dimen name="restaurant_icon_width">30dp</dimen>
     <dimen name="restaurant_icon_height">30dp</dimen>
+    <dimen name="imageItemHeight">100dp</dimen>
+    <dimen name="imageButtonWidthItem">50dp</dimen>
+    <dimen name="imageButtonHeightItem">60dp</dimen>
 </resources>
