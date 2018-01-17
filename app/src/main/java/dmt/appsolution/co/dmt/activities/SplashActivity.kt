@@ -9,7 +9,8 @@ import android.os.Handler
 import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import dmt.appsolution.co.dmt.R
-import dmt.appsolution.co.dmt.entity.Constants
+import dmt.appsolution.co.dmt.constants.Constants
+import dmt.appsolution.co.dmt.services.entity.Lugar
 import dmt.appsolution.co.dmt.services.entity.TipoLugar
 
 class SplashActivity : AppCompatActivity() {

@@ -21,5 +21,6 @@ class Constants {
         val DB_NAME: String? = "DMT_DB"
         val DB_TABLE_FAV: String? = "LUGARES_FAVORITOS"
         val DB_VERSION: Int = 1
+        val REST_URL ="https://sw-news-letter.herokuapp.com/"
     }
 }

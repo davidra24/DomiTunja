@@ -15,6 +15,7 @@ import dmt.appsolution.co.dmt.adapters.ItemAdapter
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.dialog.DialogFilter
 import dmt.appsolution.co.dmt.constants.Constants
+import dmt.appsolution.co.dmt.services.consumeRest.ArticleRest
 import kotlinx.android.synthetic.main.fragment_domicile.*
 import kotlinx.android.synthetic.main.fragment_domicile.view.*
 
@@ -29,6 +30,8 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
         startMap(savedInstanceState)
         filterFood()
         viewAux!!.buttonFilterDomicile.setOnClickListener{DialogFilter().show(fragmentManager,tag)}
+        val aR = ArticleRest(context)
+        aR.execute()
         return viewAux
 
     }

@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import dmt.appsolution.co.dmt.services.entity.Lugar;
+
 /**
  * Created by davic on 15/01/2018.
  */

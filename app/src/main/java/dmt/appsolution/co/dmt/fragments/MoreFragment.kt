@@ -12,7 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.activities.MenuActivity
-import dmt.appsolution.co.dmt.entity.Constants
+import dmt.appsolution.co.dmt.constants.Constants
 import kotlinx.android.synthetic.main.fragment_more.*
 
 class MoreFragment : Fragment() {

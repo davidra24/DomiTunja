@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import dmt.appsolution.co.dmt.constants.Constants;
+import dmt.appsolution.co.dmt.services.entity.Lugar;
 import dmt.appsolution.co.dmt.services.interfaces.LugarInterface;
 import dmt.appsolution.co.dmt.services.lists.LugarList;
 import retrofit2.Call;
@@ -20,6 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LugarRest extends AsyncTask<Void, Void, Void>{
     private AppCompatActivity activity;
     private LugarList lugarList;
+
     public LugarRest(AppCompatActivity activity){
         this.activity = activity;
         this.lugarList = new LugarList();
@@ -27,7 +29,7 @@ public class LugarRest extends AsyncTask<Void, Void, Void>{
     @Override
     protected Void doInBackground(Void... voids) {
         Retrofit builder = new Retrofit.Builder()
-                .baseUrl(Constants.Companion.getURL())
+                .baseUrl(Constants.Companion.getREST_URL())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         final LugarInterface productInterface = builder.create(LugarInterface.class);
@@ -37,8 +39,7 @@ public class LugarRest extends AsyncTask<Void, Void, Void>{
             public void onResponse(Call<LugarList> call, Response<LugarList> response) {
                 LugarList lugarListaux = response.body();
                 for (Lugar lugar:lugarListaux.getPlaces()) {
-                    if(lugar.getId_lugar() == Integer.parseInt(Constants.Companion.getID()))
-                        lugarList.addPlace(lugar);
+
                 }
             }
 

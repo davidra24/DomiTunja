@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.widget.ArrayAdapter
 import dmt.appsolution.co.dmt.R
-import dmt.appsolution.co.dmt.entity.Constants
+import dmt.appsolution.co.dmt.constants.Constants
 import kotlinx.android.synthetic.main.dialog_filter_restaurant.*
 
 /**

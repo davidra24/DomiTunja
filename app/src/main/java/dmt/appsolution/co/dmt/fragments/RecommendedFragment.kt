@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.adapters.ItemAdapter
+import dmt.appsolution.co.dmt.services.entity.Lugar
 import kotlinx.android.synthetic.main.fragment_recomended.*
 
 

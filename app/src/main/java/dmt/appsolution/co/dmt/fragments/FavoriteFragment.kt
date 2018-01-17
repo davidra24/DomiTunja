@@ -13,7 +13,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.adapters.ItemAdapter
-import dmt.appsolution.co.dmt.entity.Constants
+import dmt.appsolution.co.dmt.constants.Constants
 import dmt.appsolution.co.dmt.persistence.DataBaseHandler
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
