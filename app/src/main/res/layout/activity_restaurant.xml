@@ -52,16 +52,19 @@
 
             <com.synnapps.carouselview.CarouselView
                 android:id="@+id/carouselRestaurant"
-                android:layout_width="match_parent"
-                android:layout_height="240dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="8dp"
+                android:layout_width="0dp"
+                android:layout_height="225dp"
+                android:layout_marginBottom="24dp"
+                app:fillColor="#FFFFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayoutIcons"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:pageColor="#00000000"
                 app:radius="6dp"
                 app:slideInterval="3000"
-                app:fillColor="#FFFFFFFF"
-                app:pageColor="#00000000"
                 app:strokeColor="#FF777777"
-                app:strokeWidth="1dp"/>
+                app:strokeWidth="1dp" />
 
             <TextView
                 android:id="@+id/txtCategoryName"
@@ -74,7 +77,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/colorTitleCategory"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.095"
+                app:layout_constraintHorizontal_bias="0.09"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,15 +96,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtCategoryName" />
 
-            <RatingBar
+            <com.iarcuschin.simpleratingbar.SimpleRatingBar
                 android:id="@+id/ratingBarRestaurant"
                 style="@style/OrangeRatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:isIndicator="true"
-                android:numStars="5"
+                app:srb_starSize="22dp"
+                app:srb_starBorderWidth="1"
+                app:srb_numberOfStars="5"
+                app:srb_stepSize="1.5"
+                app:srb_borderColor="@color/colorTitleCategory"
+                app:srb_fillColor="@color/colorTitleCategory"
+                app:srb_starsSeparation="10dp"
+                app:srb_isIndicator="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.96"
                 app:layout_constraintStart_toStartOf="parent"
@@ -123,11 +130,12 @@
                 android:id="@+id/linearLayoutIcons"
                 android:layout_width="wrap_content"
                 android:layout_height="79dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toTopOf="@+id/mapRestaurant"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" android:baselineAligned="false">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
@@ -320,8 +328,8 @@
                         android:layout_width="@dimen/restaurant_icon_width"
                         android:layout_height="@dimen/restaurant_icon_height"
                         android:layout_marginBottom="8dp"
-                        android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
+                        android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
                         android:contentDescription="@android:string/unknownName"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -360,8 +368,8 @@
                         android:layout_width="@dimen/restaurant_icon_width"
                         android:layout_height="@dimen/restaurant_icon_height"
                         android:layout_marginBottom="8dp"
-                        android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
+                        android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
                         android:contentDescription="@android:string/unknownName"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -400,8 +408,8 @@
                         android:layout_width="@dimen/restaurant_icon_width"
                         android:layout_height="@dimen/restaurant_icon_height"
                         android:layout_marginBottom="8dp"
-                        android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
+                        android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
                         android:contentDescription="@android:string/unknownName"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -438,8 +446,8 @@
                         android:layout_width="@dimen/restaurant_icon_width"
                         android:layout_height="@dimen/restaurant_icon_height"
                         android:layout_marginBottom="8dp"
-                        android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
+                        android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
                         android:contentDescription="@android:string/unknownName"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -486,18 +494,24 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <RatingBar
+                    <com.iarcuschin.simpleratingbar.SimpleRatingBar
                         android:id="@+id/ratingBarInformation"
-                        style="@style/OrangeRatingBar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:srb_starSize="22dp"
+                        app:srb_numberOfStars="5"
+                        app:srb_starBorderWidth="1"
+                        app:srb_stepSize="1.5"
+                        app:srb_borderColor="@color/colorStar"
+                        app:srb_fillColor="@color/colorStar"
+                        app:srb_starsSeparation="10dp"
+                        app:srb_isIndicator="false"
                         android:layout_marginBottom="8dp"
                         android:layout_marginEnd="6dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginRight="6dp"
                         android:layout_marginLeft="8dp"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:numStars="5"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.497"

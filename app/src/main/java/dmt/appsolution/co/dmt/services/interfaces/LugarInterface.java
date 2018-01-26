@@ -1,6 +1,8 @@
 package dmt.appsolution.co.dmt.services.interfaces;
 
-import dmt.appsolution.co.dmt.services.lists.LugarList;
+import java.util.List;
+
+import dmt.appsolution.co.dmt.services.entity.Lugar;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -9,6 +11,6 @@ import retrofit2.http.GET;
  */
 
 public interface LugarInterface {
-    @GET("lugar")
-    Call<LugarList> getListPlace();
+    @GET("places")
+    Call<List<Lugar>> getListPlace();
 }

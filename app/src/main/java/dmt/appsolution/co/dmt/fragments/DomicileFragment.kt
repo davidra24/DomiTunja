@@ -15,7 +15,6 @@ import dmt.appsolution.co.dmt.adapters.ItemAdapter
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.dialog.DialogFilter
 import dmt.appsolution.co.dmt.constants.Constants
-import dmt.appsolution.co.dmt.services.consumeRest.ArticleRest
 import kotlinx.android.synthetic.main.fragment_domicile.*
 import kotlinx.android.synthetic.main.fragment_domicile.view.*
 
@@ -30,8 +29,6 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
         startMap(savedInstanceState)
         filterFood()
         viewAux!!.buttonFilterDomicile.setOnClickListener{DialogFilter().show(fragmentManager,tag)}
-        val aR = ArticleRest(context)
-        aR.execute()
         return viewAux
 
     }
@@ -42,11 +39,11 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
     }
 
     fun filterFood(){
-        Constants.filterRestaurantList.clear()
+       Constants.filterRestaurantList.clear()
         if (Constants.FOOD_FILTER == Constants.ALL_FOOD)
                 fillFilterList()
         else {
-            Constants.restaurantList.filter { it.idtipo_lugar == Constants.FOOD_FILTER }
+            Constants.restaurantList.filter { it.idTipoLugar == Constants.FOOD_FILTER }
                     .forEach { Constants.filterRestaurantList.add(it) }
         }
         validateAdapter()
@@ -105,7 +102,7 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
     private fun addMarkers(map: GoogleMap?){
         for(restaurant in Constants.filterRestaurantList)
             map!!.addMarker(MarkerOptions().
-                    position(LatLng(restaurant.locationX, restaurant.locationY))
+                    position(LatLng(restaurant.ubicacionX!!, restaurant.ubicacionY!!))
                     .title(restaurant.nombre))
     }
 

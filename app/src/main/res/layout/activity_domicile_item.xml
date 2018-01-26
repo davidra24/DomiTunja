@@ -68,15 +68,18 @@
         app:layout_constraintStart_toEndOf="@+id/imageDomicile"
         app:layout_constraintTop_toBottomOf="@+id/txtTitleDomicile" />
 
-    <RatingBar
+    <com.iarcuschin.simpleratingbar.SimpleRatingBar
         android:id="@+id/ratingBarDomicile"
-        style="@style/OrangeRatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="4dp"
-        android:isIndicator="true"
-        android:numStars="5"
+        app:srb_starSize="22dp"
+        app:srb_starBorderWidth="1"
+        app:srb_numberOfStars="5"
+        app:srb_stepSize="1.5"
+        app:srb_borderColor="@color/colorStar"
+        app:srb_fillColor="@color/colorStar"
+        app:srb_starsSeparation="10dp"
+        app:srb_isIndicator="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"

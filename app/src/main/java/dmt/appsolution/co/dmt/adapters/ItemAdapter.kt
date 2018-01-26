@@ -11,6 +11,9 @@ import android.widget.*
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.activities.RestaurantActivity
 import dmt.appsolution.co.dmt.services.entity.Lugar
+import com.bumptech.glide.Glide
+import dmt.appsolution.co.dmt.constants.Constants
+
 
 class ItemAdapter(var context:Context, items:List<Lugar>) : BaseAdapter(){
     private var itemsRestaurant: List<Lugar>? = null
@@ -36,16 +39,16 @@ class ItemAdapter(var context:Context, items:List<Lugar>) : BaseAdapter(){
         var rowView: View? = convertView
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         rowView = layoutInflater.inflate(R.layout.activity_domicile_item, null)
-        //val imageDomicile = rowView.findViewById<ImageView>(R.id.imageDomicile)
+        val imageDomicile = rowView.findViewById<ImageView>(R.id.imageDomicile)
         val titleDomicile = rowView.findViewById<TextView>(R.id.txtTitleDomicile)
         val descriptionDomicile = rowView.findViewById<TextView>(R.id.txtDescripDomicile)
-        val ratingBar = rowView.findViewById<RatingBar>(R.id.ratingBarDomicile)
+        val ratingBar = rowView.findViewById<com.iarcuschin.simpleratingbar.SimpleRatingBar>(R.id.ratingBarDomicile)
         val btnViewDomicile = rowView.findViewById<ImageButton>(R.id.btnViewDomicile)
         val item = this.itemsRestaurant!![position]
-        //imageDomicile.setImageResource(item.image)
+        Glide.with(context).load(findImage(item.id!!)).into(imageDomicile)
         titleDomicile.text = item.nombre
         descriptionDomicile.text = item.direccion
-        ratingBar.rating = item.calificacion.toFloat()
+        ratingBar.rating = item.calificacion!!.toFloat()
         btnViewDomicile.setOnClickListener{
             var bundle = Bundle()
             bundle.putSerializable("Item", item)
@@ -55,5 +58,13 @@ class ItemAdapter(var context:Context, items:List<Lugar>) : BaseAdapter(){
         }
         return rowView
     }
+
+    private fun findImage(id: String): String{
+        return Constants.photoList
+                .firstOrNull { it.idLugar == id }
+                ?.let { it.url!! }
+                ?: ""
+    }
+
 
 }

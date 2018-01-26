@@ -29,7 +29,7 @@ class DialogFilter: DialogFragment() {
 
     private fun startSpinnerFilter(dialog: Dialog){
         var list: MutableList<String> = mutableListOf()
-        Constants.restaurantType.forEach { tipoLugar -> list.add(tipoLugar.tipoLugar) }
+        Constants.restaurantType.forEach { tipoLugar -> list.add(tipoLugar.name!!) }
         var adapterFood: ArrayAdapter<String> = ArrayAdapter(activity,
                 android.R.layout.simple_spinner_item, list)
         dialog.spinnerFilter.adapter = adapterFood
@@ -38,8 +38,8 @@ class DialogFilter: DialogFragment() {
     private fun buttonsListener(dialog: Dialog){
         dialog.buttonAcceptFilter.setOnClickListener{
             Constants.restaurantType
-                    .filter { it.tipoLugar == dialog.spinnerFilter.selectedItem.toString() }
-                    .forEach { Constants.FOOD_FILTER = it.idTipoLugar }
+                    .filter { it.name == dialog.spinnerFilter.selectedItem.toString() }
+                    .forEach { Constants.FOOD_FILTER = it.id!! }
             noticeDialog!!.onAcceptButton()
             this.dismiss()
         }

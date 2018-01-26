@@ -4,19 +4,15 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import dmt.appsolution.co.dmt.constants.Constants
 import dmt.appsolution.co.dmt.services.entity.Lugar
 
-/**
- * Created by Martin on 8/01/2018.
- */
 class DataBaseHandler(var context: Context): SQLiteOpenHelper (context, Constants.DB_NAME, null, Constants.DB_VERSION){
 
     override fun onCreate(db: SQLiteDatabase?) {
         val creaateTableLugar = "CREATE TABLE IF NOT EXISTS " + Constants.DB_TABLE_FAV + "(" +
-                "  `idLugar` int(11) NOT NULL," +
+                "  `idLugar` varchar(11) NOT NULL," +
                 "  `email` varchar(180)," +
                 "  `descripcion` varchar(180)," +
                 "  `barrio` varchar(340) DEFAULT NULL, " +
@@ -27,9 +23,9 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper (context, Constant
                 "  `direccion` varchar(180)," +
                 "  `website` varchar(180) NOT NULL," +
                 "  `ubicacionLugar` varchar(200) DEFAULT NULL," +
-                "  `idTipo_lugar` int(11) NOT NULL," +
-                "  `persona_email` varchar(256) NOT NULL," +
-                "  `id_ciudad` int(11) NOT NULL," +
+                "  `idTipo_lugar` varchar(11) DEFAULT NULL," +
+                "  `persona_email` varchar(256) DEFAULT NULL," +
+                "  `id_ciudad` varchar(11) DEFAULT NULL," +
                 "  `nombre` varchar(180) NOT NULL," +
                 "  `matricula` varchar(64) NOT NULL," +
                 "  `enabled` int(10) NOT NULL DEFAULT '1'," +
@@ -40,13 +36,12 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper (context, Constant
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     fun insertLugar(lugar: Lugar){
         val db = this.writableDatabase
-        var cv = ContentValues()
-        cv.put("idLugar", lugar.id_lugar)
+        val cv = ContentValues()
+        cv.put("idLugar", lugar.id)
         cv.put("email", lugar.email)
         cv.put("descripcion", lugar.descripcion)
         cv.put("barrio", lugar.barrio)
@@ -56,16 +51,16 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper (context, Constant
         cv.put("celular", lugar.celular)
         cv.put("direccion", lugar.direccion)
         cv.put("website", lugar.website)
-        cv.put("ubicacionLugar", lugar.ubicacionlugar)
-        cv.put("idTipo_lugar", lugar.idtipo_lugar)
-        cv.put("persona_email", lugar.persona_email)
-        cv.put("id_ciudad", lugar.id_ciudad)
+        cv.put("ubicacionLugar", lugar.ubicacion)
+        cv.put("idTipo_lugar", lugar.idTipoLugar)
+        cv.put("persona_email", lugar.personaEmail)
+        cv.put("id_ciudad", lugar.idCiudad)
         cv.put("nombre", lugar.nombre)
         cv.put("matricula", lugar.matricula)
-        cv.put("enabled", lugar.enabled)
-        cv.put("locationX", lugar.locationX)
-        cv.put("locationY", lugar.locationY)
-        var result = db.insert(Constants.DB_TABLE_FAV, null, cv)
+        cv.put("enabled", lugar.habilitado)
+        cv.put("locationX", lugar.ubicacionX)
+        cv.put("locationY", lugar.ubicacionY)
+        val result = db.insert(Constants.DB_TABLE_FAV, null, cv)
         if(result == (-1).toLong())
             Toast.makeText(context, "Error al añadir a favoritos", Toast.LENGTH_SHORT).show()
         else
@@ -73,14 +68,14 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper (context, Constant
     }
 
     fun readDataLugar(): MutableList<Lugar>{
-        var list: MutableList<Lugar> = ArrayList()
+        val list: MutableList<Lugar> = ArrayList()
         val db = this.readableDatabase
         val query = "SELECT * FROM " + Constants.DB_TABLE_FAV
         val result = db.rawQuery(query, null)
         if(result.moveToFirst())
             do {
-                var lugar = Lugar()
-                lugar.id_lugar = result.getInt(result.getColumnIndex("idLugar"))
+                val lugar = Lugar()
+                lugar.id = result.getString(result.getColumnIndex("idLugar"))
                 lugar.email = result.getString(result.getColumnIndex("email"))
                 lugar.descripcion = result.getString(result.getColumnIndex("descripcion"))
                 lugar.barrio = result.getString(result.getColumnIndex("barrio"))
@@ -90,24 +85,24 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper (context, Constant
                 lugar.celular = result.getString(result.getColumnIndex("celular"))
                 lugar.direccion = result.getString(result.getColumnIndex("direccion"))
                 lugar.website = result.getString(result.getColumnIndex("website"))
-                lugar.ubicacionlugar = result.getString(result.getColumnIndex("ubicacionLugar"))
-                lugar.idtipo_lugar = result.getInt(result.getColumnIndex("idTipo_lugar"))
-                lugar.persona_email = result.getString(result.getColumnIndex("persona_email"))
-                lugar.id_ciudad = result.getInt(result.getColumnIndex("id_ciudad"))
+                lugar.ubicacion = result.getString(result.getColumnIndex("ubicacionLugar"))
+                lugar.idTipoLugar= result.getString(result.getColumnIndex("idTipo_lugar"))
+                lugar.personaEmail = result.getString(result.getColumnIndex("persona_email"))
+                lugar.idCiudad = result.getString(result.getColumnIndex("id_ciudad"))
                 lugar.nombre = result.getString(result.getColumnIndex("nombre"))
                 lugar.matricula = result.getString(result.getColumnIndex("matricula"))
-                lugar.enabled = result.getInt(result.getColumnIndex("enabled"))
-                lugar.locationX = result.getDouble(result.getColumnIndex("locationX"))
-                lugar.locationY = result.getDouble(result.getColumnIndex("locationY"))
+                lugar.habilitado = result.getInt(result.getColumnIndex("enabled")) > 0
+                lugar.ubicacionX = result.getDouble(result.getColumnIndex("locationX"))
+                lugar.ubicacionY = result.getDouble(result.getColumnIndex("locationY"))
                 list.add(lugar)
             }while (result.moveToNext())
         result.close()
         return  list
     }
 
-    fun deleteLugar(id: Int){
+    fun deleteLugar(id: String){
         val db = this.writableDatabase
-        db.delete(Constants.DB_TABLE_FAV, "idLugar =?", arrayOf(id.toString()))
+        db.delete(Constants.DB_TABLE_FAV, "idLugar =?", arrayOf(id))
         Toast.makeText(context, "Se ha eliminado de favoritos", Toast.LENGTH_SHORT).show()
         db.close()
     }
