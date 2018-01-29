@@ -14,10 +14,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawableResource
 import com.bumptech.glide.load.resource.drawable.DrawableResource
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback
-import com.google.android.gms.maps.StreetViewPanorama
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.synnapps.carouselview.CarouselView
@@ -75,8 +72,10 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
             callIntent.data = Uri.parse(url)
             if (ContextCompat.checkSelfPermission(this.baseContext, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(this,  arrayOf(Manifest.permission.CALL_PHONE), 1)
-            }else
+            }else {
                 startActivity(callIntent)
+                Toast.makeText(baseContext, "Llamando", Toast.LENGTH_SHORT).show()
+            }
         })
     }
 
@@ -149,8 +148,10 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
         map!!.isMyLocationEnabled = true
+        val latLng = LatLng(lugar!!.ubicacionX!!, lugar!!.ubicacionY!!)
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.toFloat()))
         map.addMarker(MarkerOptions().
-                position(LatLng(lugar!!.ubicacionX!!, lugar!!.ubicacionY!!)).
+                position(latLng).
                 title(lugar!!.nombre))
     }
 
