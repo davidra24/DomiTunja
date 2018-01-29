@@ -1,20 +1,14 @@
 package dmt.appsolution.co.dmt.services.consumeRest;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.synnapps.carouselview.ImageListener;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import dmt.appsolution.co.dmt.R;
@@ -59,6 +53,11 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
        loadPlaces(builder);
        loadPhotos(builder);
        loadTypes(builder);
+        while (progreso < progressBar.getMax()){
+            progreso++;
+            publishProgress(progreso);
+            SystemClock.sleep(30);
+        }
        return null;
     }
 
@@ -127,14 +126,13 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        while (progreso < progressBar.getMax()){
-            progreso++;
-            publishProgress(progreso);
-            SystemClock.sleep(20);
-        }
         progressBar.setVisibility(View.INVISIBLE);
-        activity.startActivity(new Intent(activity.getBaseContext(), MenuActivity.class));
-        activity.finish();
+        while(true){
+            if(Constants.Companion.getRestaurantList().size() != 0) {
+                activity.startActivity(new Intent(activity.getBaseContext(), MenuActivity.class));
+                activity.finish();
+                break;
+            }
+        }
     }
-
 }
