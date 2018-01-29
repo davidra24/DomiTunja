@@ -60,10 +60,12 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
 
     private fun addMarkers(map: GoogleMap?){
         var db = DataBaseHandler(this.context)
-        for(restaurant in db.readDataLugar())
-            map!!.addMarker(MarkerOptions().
-                    position(LatLng(restaurant.ubicacionX!!, restaurant.ubicacionY!!))
-                    .title(restaurant.nombre))
+        db.readDataLugar()
+                .filter { it.id != null }
+                .forEach {
+                    map!!.addMarker(MarkerOptions().position(LatLng(it.ubicacionX!!, it.ubicacionY!!))
+                            .title(it.nombre))
+                }
         db.close()
     }
 

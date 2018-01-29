@@ -69,7 +69,7 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
             Constants.ALL_FOOD -> {
                 viewAux!!.buttonFilterDomicile
                         .background = ContextCompat.getDrawable(context, R.drawable.icon4)
-                viewAux!!.textViewTypeFood.text = "TODO"
+                viewAux!!.textViewTypeFood.text = "Filtrar"
             }
             Constants.CHICKEN_FOOD -> {
                 viewAux!!.buttonFilterDomicile
@@ -100,14 +100,17 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
 
 
     private fun addMarkers(map: GoogleMap?){
-        for(restaurant in Constants.filterRestaurantList)
-            map!!.addMarker(MarkerOptions().
-                    position(LatLng(restaurant.ubicacionX!!, restaurant.ubicacionY!!))
-                    .title(restaurant.nombre))
+        Constants.filterRestaurantList
+                .filter { it.id != null }
+                .forEach {
+                    map!!.addMarker(MarkerOptions().position(LatLng(it.ubicacionX!!, it.ubicacionY!!))
+                            .title(it.nombre))
+                }
     }
 
     override fun onResume() {
         mapViewDomicile.onResume()
+        filterFood()
         super.onResume()
     }
 

@@ -32,15 +32,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by Martin on 23/01/2018.
- */
-
 public class DomiRest extends AsyncTask<Void, Integer, Void> {
 
     private AppCompatActivity activity;
     private ProgressBar progressBar;
-    int progreso = 0;
+    private int progreso = 0;
     public DomiRest(AppCompatActivity activity) {
         this.activity = activity;
         this.progressBar = activity.findViewById(R.id.progressBarSplash);
@@ -63,13 +59,7 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
        loadPlaces(builder);
        loadPhotos(builder);
        loadTypes(builder);
-        while (progreso < progressBar.getMax()){
-            progreso++;
-            publishProgress(progreso);
-            SystemClock.sleep(20);
-        }
-
-        return null;
+       return null;
     }
 
 
@@ -83,11 +73,12 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
                 for (Lugar lugar : lugarList) {
                     Constants.Companion.getRestaurantList().add(lugar);
                 }
+                Constants.Companion.getRestaurantList().add(new Lugar());
             }
 
             @Override
             public void onFailure(Call<List<Lugar>> call, Throwable t) {
-                Toast.makeText(activity.getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity.getApplicationContext(), "Error cargando lugares.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -105,7 +96,7 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
 
             @Override
             public void onFailure(Call<List<Foto>> call, Throwable t) {
-                Toast.makeText(activity.getBaseContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity.getBaseContext(), "Error cargando imagenes.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -124,7 +115,7 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
 
             @Override
             public void onFailure(Call<List<TipoLugar>> call, Throwable t) {
-                Toast.makeText(activity.getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity.getApplicationContext(), "Error cargando tipos.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -136,6 +127,11 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
+        while (progreso < progressBar.getMax()){
+            progreso++;
+            publishProgress(progreso);
+            SystemClock.sleep(20);
+        }
         progressBar.setVisibility(View.INVISIBLE);
         activity.startActivity(new Intent(activity.getBaseContext(), MenuActivity.class));
         activity.finish();

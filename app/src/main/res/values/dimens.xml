@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="icon_splash_height">448dp</dimen>
-    <dimen name="map_height">235dp</dimen>
+    <dimen name="map_height">185dp</dimen>
     <dimen name="list_view_height_domicile">291dp</dimen>
     <dimen name="list_view_height_favorite">316dp</dimen>
     <dimen name="divider_list_height">3dp</dimen>

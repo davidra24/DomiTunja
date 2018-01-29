@@ -36,6 +36,7 @@ class ItemAdapter(var context:Context, items:List<Lugar>) : BaseAdapter(){
 
     @SuppressLint("InflateParams", "ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
+
         var rowView: View? = convertView
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         rowView = layoutInflater.inflate(R.layout.activity_domicile_item, null)
@@ -45,16 +46,24 @@ class ItemAdapter(var context:Context, items:List<Lugar>) : BaseAdapter(){
         val ratingBar = rowView.findViewById<com.iarcuschin.simpleratingbar.SimpleRatingBar>(R.id.ratingBarDomicile)
         val btnViewDomicile = rowView.findViewById<ImageButton>(R.id.btnViewDomicile)
         val item = this.itemsRestaurant!![position]
-        Glide.with(context).load(findImage(item.id!!)).into(imageDomicile)
-        titleDomicile.text = item.nombre
-        descriptionDomicile.text = item.direccion
-        ratingBar.rating = item.calificacion!!.toFloat()
-        btnViewDomicile.setOnClickListener{
-            var bundle = Bundle()
-            bundle.putSerializable("Item", item)
-            var intent = Intent(context, RestaurantActivity::class.java)
-            intent.putExtras(bundle)
-            context.startActivity(intent)
+        if(item.id != null) {
+            Glide.with(context).load(findImage(item.id!!)).into(imageDomicile)
+            titleDomicile.text = item.nombre
+            descriptionDomicile.text = item.direccion
+            ratingBar.rating = item.calificacion!!.toFloat()
+            btnViewDomicile.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putSerializable("Item", item)
+                val intent = Intent(context, RestaurantActivity::class.java)
+                intent.putExtras(bundle)
+                context.startActivity(intent)
+            }
+        }else {
+            imageDomicile.visibility = View.INVISIBLE
+            titleDomicile.visibility = View.GONE
+            descriptionDomicile.visibility = View.GONE
+            btnViewDomicile.visibility = View.GONE
+            ratingBar.visibility = View.GONE
         }
         return rowView
     }

@@ -118,6 +118,7 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
     private fun openShareDialog() {
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND
+        sendIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         sendIntent.putExtra(Intent.EXTRA_TEXT, lugar!!.nombre)
         sendIntent.type = "text/plain"
         startActivity(sendIntent)
