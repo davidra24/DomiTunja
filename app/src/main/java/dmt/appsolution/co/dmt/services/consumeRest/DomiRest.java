@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import dmt.appsolution.co.dmt.R;
 import dmt.appsolution.co.dmt.activities.MenuActivity;
@@ -20,6 +21,7 @@ import dmt.appsolution.co.dmt.services.entity.TipoLugar;
 import dmt.appsolution.co.dmt.services.interfaces.FotosInterface;
 import dmt.appsolution.co.dmt.services.interfaces.LugarInterface;
 import dmt.appsolution.co.dmt.services.interfaces.TipoLugarInterface;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,6 +33,8 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
     private AppCompatActivity activity;
     private ProgressBar progressBar;
     private int progreso = 0;
+    private boolean hasEnd = false;
+
     public DomiRest(AppCompatActivity activity) {
         this.activity = activity;
         this.progressBar = activity.findViewById(R.id.progressBarSplash);
@@ -49,20 +53,25 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
         Retrofit builder = new Retrofit.Builder()
                 .baseUrl(Constants.Companion.getREST_URL())
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(new OkHttpClient().newBuilder()
+                        .connectTimeout(1, TimeUnit.MINUTES)
+                        .readTimeout(30, TimeUnit.SECONDS)
+                        .writeTimeout(30, TimeUnit.SECONDS)
+                        .build())
                 .build();
        loadPlaces(builder);
        loadPhotos(builder);
        loadTypes(builder);
-        while (progreso < progressBar.getMax()){
+        while (progreso <= progressBar.getMax()){
             progreso++;
-            publishProgress(progreso);
-            SystemClock.sleep(30);
+            onProgressUpdate(progreso);
+            SystemClock.sleep(20);
         }
+
        return null;
     }
 
-
-    private void loadPlaces(Retrofit builder) {
+    private void loadPlaces(final Retrofit builder) {
         final LugarInterface lugarInterface = builder.create(LugarInterface.class);
         Call<List<Lugar>> call = lugarInterface.getListPlace();
         call.enqueue(new Callback<List<Lugar>>() {
@@ -73,6 +82,7 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
                     Constants.Companion.getRestaurantList().add(lugar);
                 }
                 Constants.Companion.getRestaurantList().add(new Lugar());
+                hasEnd = true;
             }
 
             @Override
@@ -82,7 +92,7 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
         });
     }
 
-    private void loadPhotos(Retrofit builder) {
+    private void loadPhotos(final Retrofit builder) {
         final FotosInterface fotosInterface = builder.create(FotosInterface.class);
         Call<List<Foto>> call = fotosInterface.getListPhotos();
         call.enqueue(new Callback<List<Foto>>() {
@@ -126,13 +136,12 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        progressBar.setVisibility(View.INVISIBLE);
-        while(true){
-            if(Constants.Companion.getRestaurantList().size() != 0) {
+        while (true)
+            if (hasEnd) {
+                progressBar.setVisibility(View.INVISIBLE);
                 activity.startActivity(new Intent(activity.getBaseContext(), MenuActivity.class));
                 activity.finish();
                 break;
             }
-        }
     }
 }
