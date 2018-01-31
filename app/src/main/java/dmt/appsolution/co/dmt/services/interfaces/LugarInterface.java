@@ -11,6 +11,6 @@ import retrofit2.http.GET;
  */
 
 public interface LugarInterface {
-    @GET("places")
+    @GET("lugares/getLugaresCercaJSON.php")
     Call<List<Lugar>> getListPlace();
 }

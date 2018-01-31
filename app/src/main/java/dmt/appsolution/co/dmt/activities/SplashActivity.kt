@@ -23,7 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class SplashActivity : AppCompatActivity() {
     private val REQUEST_CODE_ASK_PERMISSIONS = 123
-    private var mCompositeDisposable: CompositeDisposable? = null
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {

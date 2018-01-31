@@ -15,10 +15,8 @@ import java.util.concurrent.TimeUnit;
 import dmt.appsolution.co.dmt.R;
 import dmt.appsolution.co.dmt.activities.MenuActivity;
 import dmt.appsolution.co.dmt.constants.Constants;
-import dmt.appsolution.co.dmt.services.entity.Foto;
 import dmt.appsolution.co.dmt.services.entity.Lugar;
 import dmt.appsolution.co.dmt.services.entity.TipoLugar;
-import dmt.appsolution.co.dmt.services.interfaces.FotosInterface;
 import dmt.appsolution.co.dmt.services.interfaces.LugarInterface;
 import dmt.appsolution.co.dmt.services.interfaces.TipoLugarInterface;
 import okhttp3.OkHttpClient;
@@ -38,8 +36,6 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
     public DomiRest(AppCompatActivity activity) {
         this.activity = activity;
         this.progressBar = activity.findViewById(R.id.progressBarSplash);
-        this.progressBar.getProgressDrawable().setColorFilter(
-                Color.WHITE, android.graphics.PorterDuff.Mode.SRC_IN);
     }
 
     @Override
@@ -60,7 +56,6 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
                         .build())
                 .build();
        loadPlaces(builder);
-       loadPhotos(builder);
        loadTypes(builder);
         while (progreso <= progressBar.getMax()){
             progreso++;
@@ -82,30 +77,14 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
                     Constants.Companion.getRestaurantList().add(lugar);
                 }
                 Constants.Companion.getRestaurantList().add(new Lugar());
-                hasEnd = true;
+                progressBar.setVisibility(View.INVISIBLE);
+                activity.startActivity(new Intent(activity.getBaseContext(), MenuActivity.class));
+                activity.finish();
             }
 
             @Override
             public void onFailure(Call<List<Lugar>> call, Throwable t) {
                 Toast.makeText(activity.getApplicationContext(), "Error cargando lugares.", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void loadPhotos(final Retrofit builder) {
-        final FotosInterface fotosInterface = builder.create(FotosInterface.class);
-        Call<List<Foto>> call = fotosInterface.getListPhotos();
-        call.enqueue(new Callback<List<Foto>>() {
-            @Override
-            public void onResponse(Call<List<Foto>> call, Response<List<Foto>> response) {
-                List<Foto> fotoList = response.body();
-                for (Foto foto: fotoList)
-                    Constants.Companion.getPhotoList().add(foto);
-            }
-
-            @Override
-            public void onFailure(Call<List<Foto>> call, Throwable t) {
-                Toast.makeText(activity.getBaseContext(), "Error cargando imagenes.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -117,7 +96,8 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
             @Override
             public void onResponse(Call<List<TipoLugar>> call, Response<List<TipoLugar>> response) {
                 List<TipoLugar> tipoLugarList = response.body();
-                Constants.Companion.getRestaurantType().add(new TipoLugar(Constants.Companion.getALL_FOOD(), "Todo", 0));
+                Constants.Companion.getRestaurantType().add(new TipoLugar("",
+                        Constants.Companion.getALL_FOOD(), "Todo", "Todo"));
                 for (TipoLugar tipoLugar: tipoLugarList)
                     Constants.Companion.getRestaurantType().add(tipoLugar);
             }
@@ -131,17 +111,5 @@ public class DomiRest extends AsyncTask<Void, Integer, Void> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         progressBar.setProgress(values[0]);
-    }
-
-
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        while (true)
-            if (hasEnd) {
-                progressBar.setVisibility(View.INVISIBLE);
-                activity.startActivity(new Intent(activity.getBaseContext(), MenuActivity.class));
-                activity.finish();
-                break;
-            }
     }
 }

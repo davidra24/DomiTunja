@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import dmt.appsolution.co.dmt.R
-import dmt.appsolution.co.dmt.activities.RestaurantActivity
 import dmt.appsolution.co.dmt.services.entity.Lugar
 import com.bumptech.glide.Glide
+import dmt.appsolution.co.dmt.activities.LoadActivity
+import dmt.appsolution.co.dmt.activities.RestaurantActivity
 import dmt.appsolution.co.dmt.constants.Constants
+import dmt.appsolution.co.dmt.services.consumeRest.DetailsRest
 
 
 class ItemAdapter(var context:Context, items:List<Lugar>) : BaseAdapter(){
@@ -46,17 +48,18 @@ class ItemAdapter(var context:Context, items:List<Lugar>) : BaseAdapter(){
         val ratingBar = rowView.findViewById<com.iarcuschin.simpleratingbar.SimpleRatingBar>(R.id.ratingBarDomicile)
         val btnViewDomicile = rowView.findViewById<ImageButton>(R.id.btnViewDomicile)
         val item = this.itemsRestaurant!![position]
-        if(item.id != null) {
-            Glide.with(context).load(findImage(item.id!!)).into(imageDomicile)
+        if(item.idLugar != null) {
+            Glide.with(context).load(Constants.REST_URL + "photos/" + item.url).into(imageDomicile)
             titleDomicile.text = item.nombre
             descriptionDomicile.text = item.direccion
             ratingBar.rating = item.calificacion!!.toFloat()
             btnViewDomicile.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putSerializable("Item", item)
-                val intent = Intent(context, RestaurantActivity::class.java)
-                intent.putExtras(bundle)
-                context.startActivity(intent)
+            Constants.ID_LUGAR = item.idLugar!!
+            val bundle = Bundle()
+            bundle.putSerializable("Item", item)
+            val intent = Intent(context, LoadActivity::class.java)
+            intent.putExtras(bundle)
+            context.startActivity(intent)
             }
         }else {
             imageDomicile.visibility = View.INVISIBLE
@@ -67,13 +70,4 @@ class ItemAdapter(var context:Context, items:List<Lugar>) : BaseAdapter(){
         }
         return rowView
     }
-
-    private fun findImage(id: String): String{
-        return Constants.photoList
-                .firstOrNull { it.idLugar == id }
-                ?.let { it.url!! }
-                ?: ""
-    }
-
-
 }

@@ -26,8 +26,8 @@ class RecommendedFragment : Fragment() {
 
     private fun fillListRecommended(){
         val items: MutableList<Lugar> = Constants.restaurantList
-                .filter { it.id != null && it.habilitado!! }
-                .toMutableList()
+                /*.filter { it.idLugar != null && it.habilitado!! }
+                .toMutableList()*/
         listViewRecommended.adapter = ItemAdapter(this.activity, items)
     }
 

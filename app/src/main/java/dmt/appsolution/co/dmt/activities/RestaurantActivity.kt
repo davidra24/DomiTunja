@@ -3,17 +3,13 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawableResource
-import com.bumptech.glide.load.resource.drawable.DrawableResource
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
@@ -21,18 +17,19 @@ import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.constants.Constants
-import dmt.appsolution.co.dmt.persistence.DataBaseHandler
-import dmt.appsolution.co.dmt.services.consumeRest.DomiRest
+import dmt.appsolution.co.dmt.persistence.DataBaseHandlerDetalles
+import dmt.appsolution.co.dmt.persistence.DataBaseHandlerLugar
 import dmt.appsolution.co.dmt.services.entity.Lugar
+import dmt.appsolution.co.dmt.services.entity.LugarDetalles
 import kotlinx.android.synthetic.main.activity_restaurant.*
-import java.util.ArrayList
 
 class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetViewPanoramaReadyCallback {
+    private var lugarDetalles: LugarDetalles? = null
     private var lugar: Lugar? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lugar = intent.extras.getSerializable("Item") as Lugar
+        lugarDetalles = Constants.lugarDetalles
         setContentView(R.layout.activity_restaurant)
         startMaps(savedInstanceState)
         makeACall()
@@ -50,11 +47,11 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
 
     private fun makeACall(){
         try {
-        var phoneNumber = lugar!!.celular!!
+        var phoneNumber = lugarDetalles!!.celular!!
             if (phoneNumber!!.isNotEmpty())
                 call(phoneNumber)
             else {
-                phoneNumber = lugar!!.telefono!!
+                phoneNumber = lugarDetalles!!.telefono!!
                 if (phoneNumber!!.isNotEmpty())
                         call(phoneNumber)
                 else
@@ -88,15 +85,14 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
 
     private fun startCarousel() {
         val listImg:MutableList<String> = mutableListOf()
-        Constants.photoList
-                .filter { lugar!!.id == it.idLugar }
-                .forEach {listImg.add(it.url!!)}
+        lugarDetalles!!.fotos!!
+                .forEach {listImg.add(Constants.REST_URL + "photos/" + it!!)}
         fillCarousel(listImg)
     }
 
     private fun fillCarousel(img:MutableList<String>){
         val imageListener = ImageListener {position, imageView -> Glide.with(baseContext).load(img[position]).into(imageView)  }
-        val carouselView:CarouselView ?= findViewById(R.id.carouselRestaurant)
+        val carouselView:CarouselView? = findViewById(R.id.carouselRestaurant)
         carouselView!!.pageCount = img.size
         carouselView.setImageListener(imageListener)
     }
@@ -105,66 +101,62 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
         buttonAddFavorite.setOnClickListener {validateInsertion()}
         buttonShare.setOnClickListener {openShareDialog()}
         buttonWebSite.setOnClickListener{openWebSite()}
-        Constants.restaurantType.forEach { name ->if (name.id == lugar!!.idTipoLugar)txtCategoryName.text = name.name}
-        txtRestaurantName.text = lugar!!.nombre
-        ratingBarRestaurant.rating = lugar!!.calificacion!!.toFloat()
-        buttonDescriptionInformation.text = lugar!!.descripcion
-        buttonNumber.text = lugar!!.telefono
-        buttonWebSiteInformation.text = lugar!!.website
-        buttonContactInformation.text = lugar!!.email
+        Constants.restaurantType.forEach { type ->if (type.idTipoLugar == lugarDetalles!!.idTipoLugar)txtCategoryName.text = type.tipoLugar}
+        txtRestaurantName.text = lugarDetalles!!.nombre
+        ratingBarRestaurant.rating = lugarDetalles!!.calificacion!!.toFloat()
+        buttonDescriptionInformation.text = lugarDetalles!!.descripcion
+        buttonNumber.text = lugarDetalles!!.telefono
+        buttonWebSiteInformation.text = lugarDetalles!!.website
+        buttonContactInformation.text = lugarDetalles!!.email
     }
 
     private fun openShareDialog() {
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND
         sendIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        sendIntent.putExtra(Intent.EXTRA_TEXT, lugar!!.nombre)
+        sendIntent.putExtra(Intent.EXTRA_TEXT, lugarDetalles!!.nombre)
         sendIntent.type = "text/plain"
         startActivity(sendIntent)
     }
 
     private fun openWebSite(){
-        val uriUrl = Uri.parse("https://" + lugar!!.website)
+        val uriUrl = Uri.parse(lugarDetalles!!.website)
         val launchBrowser = Intent(Intent.ACTION_VIEW, uriUrl)
         startActivity(launchBrowser)
     }
 
     private fun validateInsertion() {
-        var db = DataBaseHandler(this.baseContext)
-        var data: MutableList<Lugar> = db.readDataLugar()
-        val isFavorite = (0 .. (data.size -1)).any { data[it].id == lugar!!.id }
+        var dbLugares = DataBaseHandlerLugar(this.baseContext)
+        var lugares: MutableList<Lugar> = dbLugares.readDataLugar()
+        val isFavorite = (0 .. (lugares.size - 1)).any { lugares[it].idLugar == lugar!!.idLugar }
         if (isFavorite)
-            db.deleteLugar(lugar!!.id!!)
+            dbLugares.deleteLugar(lugar!!.idLugar!!)
         else
-            db.insertLugar(lugar!!)
-        db.close()
+            dbLugares.insertLugar(lugar!!)
+        dbLugares.close()
     }
 
     override fun onStreetViewPanoramaReady(map: StreetViewPanorama?) {
         map!!.isStreetNamesEnabled = true
-        map.setPosition(LatLng(lugar!!.ubicacionX!!, lugar!!.ubicacionY!!))
+        map.setPosition(LatLng(lugarDetalles!!.ubicacionLugar!!.split(",")[0].toDouble(),
+                lugarDetalles!!.ubicacionLugar!!.split(",")[1].toDouble()))
     }
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
         map!!.isMyLocationEnabled = true
-        val latLng = LatLng(lugar!!.ubicacionX!!, lugar!!.ubicacionY!!)
+        val latLng = LatLng(lugarDetalles!!.ubicacionLugar!!.split(",")[0].toDouble(),
+                lugarDetalles!!.ubicacionLugar!!.split(",")[1].toDouble())
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.toFloat()))
         map.addMarker(MarkerOptions().
                 position(latLng).
-                title(lugar!!.nombre))
+                title(lugarDetalles!!.nombre))
     }
 
     override fun onResume() {
         mapRestaurant.onResume()
         mapStreeRestaurant.onResume()
         super.onResume()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mapRestaurant.onDestroy()
-        mapStreeRestaurant.onDestroy()
     }
 
     override fun onLowMemory() {

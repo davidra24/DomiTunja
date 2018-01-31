@@ -11,6 +11,6 @@ import retrofit2.http.GET;
  */
 
 public interface TipoLugarInterface {
-    @GET("types")
+    @GET("lugares/getTiposJSON.php")
     Call<List<TipoLugar>> getListTypePlace();
 }

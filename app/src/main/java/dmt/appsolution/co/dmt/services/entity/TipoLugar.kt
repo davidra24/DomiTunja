@@ -7,23 +7,23 @@ import com.google.gson.annotations.SerializedName
  * Created by Martin on 8/01/2018.
  */
 class TipoLugar {
+    @SerializedName("0")
+    @Expose
+    var _0: String? = null
+    @SerializedName("idTipo_lugar")
+    @Expose
+    var idTipoLugar: String? = null
+    @SerializedName("1")
+    @Expose
+    var _1: String? = null
+    @SerializedName("tipo_lugar")
+    @Expose
+    var tipoLugar: String? = null
 
-    @SerializedName("_id")
-    @Expose
-    var id: String? = null
-    @SerializedName("name")
-    @Expose
-    var name: String? = null
-    @SerializedName("description")
-    @Expose
-    var description: String? = null
-    @SerializedName("__v")
-    @Expose
-    var v : Int? = null
-
-    constructor(id: String, name: String, v: Int){
-        this.id = id
-        this.name = name
-        this.v = v
+    constructor(_0: String, idTipoLugar: String, _1: String, tipoLugar: String){
+        this._0 = _0
+        this.idTipoLugar = idTipoLugar
+        this._1 = _1
+        this.tipoLugar = tipoLugar
     }
 }

@@ -69,22 +69,100 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
             Constants.ALL_FOOD -> {
                 viewAux!!.buttonFilterDomicile
                         .background = ContextCompat.getDrawable(context, R.drawable.icon4)
-                viewAux!!.textViewTypeFood.text = "Filtrar"
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.ALL_FOOD }
+                        .forEach { viewAux!!.textViewTypeFood.text = "Filtrar" }
             }
-            Constants.CHICKEN_FOOD -> {
+            Constants.FAST_FOOD -> {
                 viewAux!!.buttonFilterDomicile
-                        .background = ContextCompat.getDrawable(context, R.drawable.icon12)
-                viewAux!!.textViewTypeFood.text = "POLLO"
+                        .background = ContextCompat.getDrawable(context, R.drawable.icon5)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.FAST_FOOD }
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
             }
-            Constants.MEAT_FOOD -> {
+            Constants.ORIENTAL_FOOD -> {
+                viewAux!!.buttonFilterDomicile.background =
+                        ContextCompat.getDrawable(context,R.drawable.icon6)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.ORIENTAL_FOOD }
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
+            }
+            Constants.ITALIAN_FOOD -> {
+                viewAux!!.buttonFilterDomicile.background =
+                        ContextCompat.getDrawable(context,R.drawable.icon7)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.ITALIAN_FOOD}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
+            }
+            Constants.TYPICAL_FOOD -> {
+                viewAux!!.buttonFilterDomicile
+                        .background = ContextCompat.getDrawable(context, R.drawable.icon8)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.TYPICAL_FOOD}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
+            }
+            Constants.DESSERT -> {
+                viewAux!!.buttonFilterDomicile.background =
+                        ContextCompat.getDrawable(context,R.drawable.icon9)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.DESSERT}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
+            }
+            Constants.BREAKFAST -> {
+                viewAux!!.buttonFilterDomicile.background =
+                        ContextCompat.getDrawable(context,R.drawable.icon10)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.BREAKFAST}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
+            }
+            Constants.COFFE -> {
+                viewAux!!.buttonFilterDomicile
+                        .background = ContextCompat.getDrawable(context, R.drawable.icon11)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.COFFE}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
+            }
+            Constants.CHICKEN -> {
+                viewAux!!.buttonFilterDomicile.background =
+                        ContextCompat.getDrawable(context,R.drawable.icon12)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.CHICKEN}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
+            }
+            Constants.PIZZA -> {
+                viewAux!!.buttonFilterDomicile.background =
+                        ContextCompat.getDrawable(context,R.drawable.icon13)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.PIZZA}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
+            }
+            Constants.SEA_FOOD -> {
+                viewAux!!.buttonFilterDomicile
+                        .background = ContextCompat.getDrawable(context, R.drawable.icon14)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.SEA_FOOD}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
+            }
+            Constants.VEGETARIAN_FOOD -> {
+                viewAux!!.buttonFilterDomicile.background =
+                        ContextCompat.getDrawable(context,R.drawable.icon15)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.VEGETARIAN_FOOD}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
+            }
+            Constants.MEXICAN_FOOD-> {
                 viewAux!!.buttonFilterDomicile.background =
                         ContextCompat.getDrawable(context,R.drawable.icon16)
-                viewAux!!.textViewTypeFood.text = "CARNE"
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.MEXICAN_FOOD}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
             }
-            Constants.FISH_FOOD -> {
+            Constants.GOURMET_FOOD-> {
                 viewAux!!.buttonFilterDomicile.background =
-                        ContextCompat.getDrawable(context,R.drawable.icon14)
-                viewAux!!.textViewTypeFood.text = "PESCADO"
+                        ContextCompat.getDrawable(context,R.drawable.icon4)
+                Constants.restaurantType
+                        .filter { it.idTipoLugar == Constants.GOURMET_FOOD}
+                        .forEach { viewAux!!.textViewTypeFood.text = it.tipoLugar }
             }
         }
 
@@ -101,9 +179,10 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
 
     private fun addMarkers(map: GoogleMap?){
         Constants.filterRestaurantList
-                .filter { it.id != null }
+                .filter { it.idLugar != null }
                 .forEach {
-                    map!!.addMarker(MarkerOptions().position(LatLng(it.ubicacionX!!, it.ubicacionY!!))
+                    map!!.addMarker(MarkerOptions().position(LatLng(it!!.ubicacionLugar!!.split(",")[0].toDouble(),
+                            it!!.ubicacionLugar!!.split(",")[1].toDouble()))
                             .title(it.nombre))
                 }
     }
@@ -112,11 +191,6 @@ class DomicileFragment : Fragment(), OnMapReadyCallback{
         mapViewDomicile.onResume()
         filterFood()
         super.onResume()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mapViewDomicile.onDestroy()
     }
 
     override fun onLowMemory() {

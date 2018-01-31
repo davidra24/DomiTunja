@@ -16,6 +16,8 @@
         android:name="com.example.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -31,7 +33,8 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".activities.SplashActivity"
+        <activity
+            android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,12 +42,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MenuActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".itemList.ItemDomicileLayout"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.RestaurantActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activities.MenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".itemList.ItemDomicileLayout"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.RestaurantActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.LoadActivity"></activity>
     </application>
-    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+
 </manifest>

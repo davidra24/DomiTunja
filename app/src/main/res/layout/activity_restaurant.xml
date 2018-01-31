@@ -77,7 +77,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/colorTitleCategory"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.09"
+                app:layout_constraintHorizontal_bias="0.08"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,16 +92,15 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/colorAccent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.097"
+                app:layout_constraintHorizontal_bias="0.08"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtCategoryName" />
 
             <com.iarcuschin.simpleratingbar.SimpleRatingBar
                 android:id="@+id/ratingBarRestaurant"
-                style="@style/OrangeRatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="120dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.923"
                 app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +118,7 @@
                 android:id="@+id/imageViewBackgroundIcons"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/content_opcions_messages"
                 android:contentDescription="@android:string/untitled"
@@ -147,11 +146,11 @@
 
                     <ImageView
                         android:id="@+id/imageView"
-                        android:layout_width="37dp"
+                        android:layout_width="33dp"
                         android:layout_height="33dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:contentDescription="@android:string/untitled"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -189,11 +188,11 @@
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="37dp"
+                        android:layout_width="33dp"
                         android:layout_height="33dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:contentDescription="@android:string/unknownName"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -228,11 +227,11 @@
 
                     <ImageView
                         android:id="@+id/imageView3"
-                        android:layout_width="37dp"
+                        android:layout_width="33dp"
                         android:layout_height="33dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:contentDescription="@android:string/unknownName"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -268,11 +267,11 @@
 
                     <ImageView
                         android:id="@+id/imageView4"
-                        android:layout_width="37dp"
+                        android:layout_width="33dp"
                         android:layout_height="33dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:contentDescription="@android:string/unknownName"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -501,14 +500,6 @@
                         android:id="@+id/ratingBarInformation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srb_starSize="30dp"
-                        app:srb_numberOfStars="5"
-                        app:srb_starBorderWidth="1"
-                        app:srb_stepSize="0.5"
-                        app:srb_borderColor="@color/colorStar"
-                        app:srb_fillColor="@color/colorStar"
-                        app:srb_starsSeparation="10dp"
-                        app:srb_isIndicator="false"
                         android:layout_marginBottom="8dp"
                         android:layout_marginEnd="6dp"
                         android:layout_marginLeft="8dp"
@@ -519,7 +510,15 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.497"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textViewRatingRestaurant" />
+                        app:layout_constraintTop_toBottomOf="@+id/textViewRatingRestaurant"
+                        app:srb_borderColor="@color/colorStar"
+                        app:srb_fillColor="@color/colorStar"
+                        app:srb_isIndicator="false"
+                        app:srb_numberOfStars="5"
+                        app:srb_starBorderWidth="1"
+                        app:srb_starSize="30dp"
+                        app:srb_starsSeparation="10dp"
+                        app:srb_stepSize="0.5" />
                 </android.support.constraint.ConstraintLayout>
 
             </LinearLayout>

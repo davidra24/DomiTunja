@@ -13,7 +13,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import dmt.appsolution.co.dmt.R
 import dmt.appsolution.co.dmt.adapters.ItemAdapter
-import dmt.appsolution.co.dmt.persistence.DataBaseHandler
+import dmt.appsolution.co.dmt.persistence.DataBaseHandlerLugar
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 /**
@@ -38,7 +38,7 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun fillListFavorite(){
-        var db = DataBaseHandler(this.context)
+        var db = DataBaseHandlerLugar(this.context)
         itemAdapter = ItemAdapter(this.activity, db.readDataLugar())
         listViewFavorite.adapter = itemAdapter
         db.close()
@@ -59,11 +59,12 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun addMarkers(map: GoogleMap?){
-        var db = DataBaseHandler(this.context)
+        var db = DataBaseHandlerLugar(this.context)
         db.readDataLugar()
-                .filter { it.id != null }
+                .filter { it.idLugar != null }
                 .forEach {
-                    map!!.addMarker(MarkerOptions().position(LatLng(it.ubicacionX!!, it.ubicacionY!!))
+                    map!!.addMarker(MarkerOptions().position(LatLng(it!!.ubicacionLugar!!.split(",")[0].toDouble(),
+                            it!!.ubicacionLugar!!.split(",")[1].toDouble()))
                             .title(it.nombre))
                 }
         db.close()
@@ -74,11 +75,6 @@ class FavoriteFragment : Fragment(), OnMapReadyCallback {
         mapViewFavorite.onResume()
         fillListFavorite()
         super.onResume()
-    }
-
-    override fun onDestroy() {
-        mapViewFavorite.onDestroy()
-        super.onDestroy()
     }
 
     override fun onLowMemory() {
