@@ -39,8 +39,11 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when (requestCode) {
-            1 -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                makeACall()
+            1 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    makeACall()
+                }
+                return
             }
         }
     }
@@ -54,11 +57,14 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
                 phoneNumber = lugarDetalles!!.telefono!!
                 if (phoneNumber!!.isNotEmpty())
                         call(phoneNumber)
-                else
-                    Toast.makeText(this.baseContext, "El restaurante no tiene numero.",Toast.LENGTH_LONG).show()
+                else {
+                    Toast.makeText(this.baseContext, "El restaurante no tiene numero.", Toast.LENGTH_LONG).show()
+                    buttonCallInformation.isEnabled = false
+                }
             }
         }catch (e:Exception){
             Toast.makeText(this.baseContext, "??? el restaurante no tiene numero ???",Toast.LENGTH_LONG).show()
+            buttonCallInformation.isEnabled = false
         }
     }
 
@@ -100,14 +106,22 @@ class RestaurantActivity : AppCompatActivity() , OnMapReadyCallback, OnStreetVie
     private fun startComponents() {
         buttonAddFavorite.setOnClickListener {validateInsertion()}
         buttonShare.setOnClickListener {openShareDialog()}
-        buttonWebSite.setOnClickListener{openWebSite()}
-        Constants.restaurantType.forEach { type ->if (type.idTipoLugar == lugarDetalles!!.idTipoLugar)txtCategoryName.text = type.tipoLugar}
+        validateWebButton()
+        Constants.restaurantType.forEach { type ->
+            if (type.idTipoLugar == lugarDetalles!!.idTipoLugar)txtCategoryName.text = type.tipoLugar}
         txtRestaurantName.text = lugarDetalles!!.nombre
         ratingBarRestaurant.rating = lugarDetalles!!.calificacion!!.toFloat()
         buttonDescriptionInformation.text = lugarDetalles!!.descripcion
         buttonNumber.text = lugarDetalles!!.telefono
         buttonWebSiteInformation.text = lugarDetalles!!.website
         buttonContactInformation.text = lugarDetalles!!.email
+    }
+
+    private fun validateWebButton() {
+        if(lugarDetalles!!.website != null && lugarDetalles!!.website != "")
+            buttonWebSite.setOnClickListener{openWebSite()}
+        else
+            buttonWebSite.isEnabled = false
     }
 
     private fun openShareDialog() {
